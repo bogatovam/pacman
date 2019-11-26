@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: pacman_player_manager
+server:
+  port: 9090
+
+pacman:
+  session_manager:
+    uri: localhost
+    port: 8081
+    url: ${pacman.session_manager.uri}:${pacman.session_manager.port}
