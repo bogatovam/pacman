@@ -39,7 +39,7 @@ public class CondoleApplication {
 
     private static void newGame(String userId) throws InterruptedException {
         WebClient playerClient = WebClient.create("http://" + playerURL);
-        ClientResponse responce =  playerClient.get().uri("/queue/regist/{userId}", userId).exchange().block();
+        ClientResponse responce =  playerClient.get().uri("/queue/{userId}", userId).exchange().block();
         if (responce.statusCode().value() != 200) {
             System.out.println("Error while regist client: " + responce.statusCode().value() + ", " + responce.bodyToMono(String.class).block());
             return;
@@ -79,7 +79,7 @@ public class CondoleApplication {
         System.out.println("Choose session: ");
         Scanner scanner = new Scanner(System.in);
         sessionId = scanner.nextLine();
-        responce =  sessionClient.get().uri("/session/{sessionId}/add/{userId}", sessionId, userId).exchange().block();
+        responce =  sessionClient.get().uri("/session/{sessionId}/user/{userId}", sessionId, userId).exchange().block();
         if (responce.statusCode().value() != 200) {
             System.out.println("Error while connect to session: " + responce.statusCode().value() + ", " + responce.bodyToMono(String.class).block());
             return;

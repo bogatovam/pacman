@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
+import pacman.player_manager.client.GameManagerClient;
 import pacman.player_manager.client.SessionManagerClient;
+import pacman.player_manager.model.PlayerAction;
 import pacman.player_manager.model.Session;
 import pacman.player_manager.model.User;
 import pacman.player_manager.publisher.OpeningSessionPublisher;
@@ -27,11 +29,14 @@ public class PlayerSessionService {
     @Autowired
     private SessionManagerClient sessionManagerClient;
 
+    @Autowired
+    private GameManagerClient gameManagerClient;
+
     @Async
-    public void createSession(List<String> playerQueue) {
+    public void createSession(List<User> playerQueue) {
         List<User> players = new ArrayList<>();
         for (int i = 0; i < 4; ++i) {
-            players.add(new User(playerQueue.get(0)));
+            players.add(playerQueue.get(0));
             playerQueue.remove(0);
         }
         LOG.info("Start game for players: " + players);

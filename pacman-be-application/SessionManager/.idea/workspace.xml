@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f25d745c-3ac0-4eaa-bf3a-3e40370891f8" name="Default Changelist" comment="" />
+    <list default="true" id="f25d745c-3ac0-4eaa-bf3a-3e40370891f8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ConsoleClient/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleClient/src/main/java/CondoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/src/main/java/CondoleApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleClient/target/classes/CondoleApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/target/classes/CondoleApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleClient/target/classes/META-INF/ConsoleClient.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/client/SessionManagerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/client/SessionManagerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/config/ClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/config/ClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/config/RoutesConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/config/RoutesConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/handler/RegistPlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/handler/RegistPlayerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/service/PlayerQueueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/service/PlayerQueueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/service/PlayerSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/service/PlayerSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/META-INF/player_manager.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/client/SessionManagerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/client/SessionManagerClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/handler/RegistPlayerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/handler/RegistPlayerHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/service/PlayerQueueService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/service/PlayerQueueService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/service/PlayerSessionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/service/PlayerSessionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/test-classes/OpeningSocketTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/test-classes/OpeningSocketTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pacman/session_manager/handler/ChangingSessionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pacman/session_manager/handler/ChangingSessionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pacman/session_manager/handler/SessionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pacman/session_manager/handler/SessionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pacman/session_manager/model/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pacman/session_manager/model/Session.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pacman/session_manager/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pacman/session_manager/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pacman/session_manager/service/SessionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pacman/session_manager/service/SessionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebSocket_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebSocket_Test/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,34 +52,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ChangingSessionPublisher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="187">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,22 +64,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/client/GameManagerWebSocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/RoutersConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="600">
+              <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,23 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -99,8 +87,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/SessionStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="68">
+              <caret line="9" selection-start-line="9" selection-end-line="27" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="96" column="10" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ChangingSessionPublisher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/client/GameManagerClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/ClientConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/WebSocketConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="172">
+              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,9 +167,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -134,29 +183,62 @@
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_controller/model/Session.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_controller/service/SessionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_controller/handler/SessionHandler.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/SessionClosingPublisher.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/SessionChangingPubliser.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/config/RouterConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/SessionApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ClosingSessionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/config/WebSocketConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ChangingSessionPublisher.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/config/ClientConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Ghost.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/client/GameManagerClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Session.java" />
         <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/SessionStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Pacman.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Point.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/client/WebSocketClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/client/GameManagerWebSocketClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/PlayerAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="1938" />
-    <option name="height" value="1031" />
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="session_manager" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="session_manager" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="session_manager" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="io.github.reactivefeign:feign-reactor-webclient:1.0.0" type="c0821a7e:MavenProjectsStructure$DependencyNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="width" value="1938" />
+    <option name="height" value="1032" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -196,6 +278,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="session_manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SessionManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SessionManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="session_manager" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SessionManager" type="b2602c69:ProjectViewProjectNode" />
@@ -256,17 +347,19 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574764742300" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575751215374" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pacman.session_manager.config" />
       <recent name="pacman.session_manager.model" />
       <recent name="pacman.session_controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Бездна\Projects\pacman\pacman-be-application\SessionManager\src\main\java\pacman\session_manager\model" />
       <recent name="D:\Бездна\Projects\Pacman\SessionController\src\main\resources" />
     </key>
   </component>
@@ -319,7 +412,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25995317" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24434036" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -328,8 +421,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47602132" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.20603907" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6891652" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.56305504" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -341,27 +434,13 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.023419203" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-691">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/SessionApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -372,26 +451,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ClosingSessionPublisher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ClosingSessionPublisher.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -399,20 +459,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ClosingSessionHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ClosingSessionHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="1207">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="10" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1022">
+          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
+          <folding>
+            <element signature="n#repositories#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#0;n#dependencies#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#1;n#dependencies#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#2;n#dependencies#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#3;n#dependencies#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#5;n#dependencies#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#6;n#dependencies#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#7;n#dependencies#0;n#project#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Pacman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Ghost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/RoutersConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/RoutersConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="85">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -421,48 +551,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/WebSocketConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="172">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ChangingSessionPublisher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/client/GameManagerClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        <state relative-caret-position="255">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/config/ClientConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="187">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/SessionHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Session.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/client/GameManagerWebSocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="600">
+          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -471,15 +601,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/SessionStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="68">
+          <caret line="9" selection-start-line="9" selection-end-line="27" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/handler/ChangingSessionHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="136">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/PlayerAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/publisher/ChangingSessionPublisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/service/SessionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="96" column="10" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

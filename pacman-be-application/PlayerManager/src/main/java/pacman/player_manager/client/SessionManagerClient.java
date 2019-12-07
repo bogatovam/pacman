@@ -23,7 +23,7 @@ public interface SessionManagerClient {
     @RequestLine("PUT /session")
     Mono<String> openSession(Publisher<List<User>> players);
 
-    @RequestLine("GET /session/{sessionId}/close")
+    @RequestLine("DELETE /session/{sessionId}")
     @Headers("Content-Type: application/json")
     Mono<Session> closeSession(@Param("sessionId") String sessionId);
 }

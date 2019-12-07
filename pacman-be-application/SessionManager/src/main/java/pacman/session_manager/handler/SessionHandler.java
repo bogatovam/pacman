@@ -83,9 +83,9 @@ public class SessionHandler {
 
     public RouterFunction<ServerResponse> routes() {
         return nest(path("/session"),
-                route(GET("/{sessionId}/add/{userId}"), addWatcher())
-                        .and(route(GET("/{sessionId}/remove/{userId}"), removeWatcher()))
-                        .and(route(GET("/{sessionId}/close"), closeSession()))
+                route(GET("/{sessionId}/user/{userId}"), addWatcher())
+                        .and(route(DELETE("/{sessionId}/user/{userId}"), removeWatcher()))
+                        .and(route(DELETE("/{sessionId}"), closeSession()))
                         .and(route(GET("/{sessionId}"), getSessionById()))
                         .and(route(method(HttpMethod.GET), getOpenedSessions()))
                         .and(route(method(HttpMethod.PUT), openSession())));

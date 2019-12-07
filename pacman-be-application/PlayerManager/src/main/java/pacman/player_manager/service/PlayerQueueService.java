@@ -21,27 +21,30 @@ public class PlayerQueueService {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlayerQueueService.class);
 
-    private List<String> playerQueue = new CopyOnWriteArrayList<>(); // List of playerId
+    private List<User> playerQueue = new CopyOnWriteArrayList<>(); // List of players
 
-    public Mono<String> addIntoQueue(String id) {
+    public Mono<User> addIntoQueue(String id) {
         return Mono.just(id)
                 .doOnNext(userId -> LOG.info("Regist player: userId=" + userId))
-                .flatMap(userId -> !playerQueue.contains(userId) ?
-                        Mono.just(userId)
-                            .doOnNext(playerId -> playerQueue.add(playerId))
-                            .doOnNext(playerId -> LOG.info("Player was created: userId=" + userId))
-                            .doOnNext(playerId -> checkForFullSet()) :
-                        Mono.error(new Exception("Player with userId=" + userId + " already exist")));
+                // TODO: вытаскивать польователей из базы
+                .map(userId -> new User(userId, userId))
+                .flatMap(user -> !playerQueue.contains(user) ?
+                        Mono.just(user)
+                            .doOnNext(player -> playerQueue.add(player))
+                            .doOnNext(player -> LOG.info("Player was created: user=" + player))
+                            .doOnNext(player -> checkForFullSet()) :
+                        Mono.error(new Exception("Player with user=" + user + " already exist")));
     }
 
-    public Mono<String> removeFromQueue(String id) {
+    public Mono<User> removeFromQueue(String id) {
         return Mono.just(id)
                 .doOnNext(userId -> LOG.info("Remove user: userId=" + userId))
-                .flatMap(userId -> playerQueue.contains(userId) ?
-                        Mono.just(userId)
-                                .doOnNext(playerId -> playerQueue.remove(playerId))
-                                .doOnNext(playerId -> LOG.info("Player was removed: userId=" + userId)) :
-                        Mono.error(new Exception("Player with userId=" + userId + " doesn't exist")));
+                .map(userId -> new User(userId, userId))
+                .flatMap(user -> playerQueue.contains(user) ?
+                        Mono.just(user)
+                                .doOnNext(player -> playerQueue.remove(player))
+                                .doOnNext(player -> LOG.info("Player was removed: user=" + player)) :
+                        Mono.error(new Exception("Player with user=" + user + " doesn't exist")));
     }
 
     private void checkForFullSet() {

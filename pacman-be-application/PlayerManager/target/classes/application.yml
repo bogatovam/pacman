@@ -9,3 +9,7 @@ pacman:
     uri: localhost
     port: 8081
     url: ${pacman.session_manager.uri}:${pacman.session_manager.port}
+  game_manager:
+    uri: localhost
+    port: 8085
+    url: ${pacman.game_manager.uri}:${pacman.game_manager.port}
