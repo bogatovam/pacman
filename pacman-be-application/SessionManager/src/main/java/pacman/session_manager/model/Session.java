@@ -14,15 +14,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Session {
     private String id = UUID.randomUUID().toString();
+    private GameState gameState;
     private List<User> players = new ArrayList<>();
     private List<User> watchers = new ArrayList<>();
 
     public Session(List<User> players) {
         this.players = players;
-    }
-
-    public boolean containUser(String userId) {
-        return players.stream().map(user -> user.getId()).anyMatch(id -> userId.equals(id)) ||
-                watchers.stream().map(user -> user.getId()).anyMatch(id -> userId.equals(id));
     }
 }

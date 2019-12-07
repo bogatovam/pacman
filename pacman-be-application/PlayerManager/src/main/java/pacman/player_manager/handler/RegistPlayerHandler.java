@@ -1,6 +1,7 @@
 package pacman.player_manager.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.reactive.function.server.HandlerFunction;
@@ -9,8 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import pacman.player_manager.service.PlayerQueueService;
 import reactor.core.publisher.Mono;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.path;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.nest;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
@@ -39,8 +39,8 @@ public class RegistPlayerHandler {
     }
 
     public RouterFunction<ServerResponse> routes() {
-        return nest(path("/queue"),
-        route(GET("/regist/{userId}"), registUser())
-                .and(route(GET("/remove/{userId}"), removeUser())));
+        return nest(path("/queue/{userId}"),
+                route(method(HttpMethod.GET), registUser())
+                        .and(route(method(HttpMethod.DELETE), removeUser())));
     }
 }

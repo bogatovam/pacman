@@ -6,7 +6,6 @@ import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.util.UriComponentsBuilder;
-import pacman.session_manager.model.Session;
 import pacman.session_manager.model.SessionStatus;
 import pacman.session_manager.publisher.ChangingSessionPublisher;
 import reactor.core.publisher.Flux;
