@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { AppState } from "src/app/app.state";
-import { MessageFromEffect, MessageFromReducer } from "src/app/game/store/game.actions";
 
 @Component({
   selector: 'app-game',
@@ -14,8 +13,6 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(new MessageFromReducer());
-    this.store.dispatch(new MessageFromEffect());
   }
 
 }

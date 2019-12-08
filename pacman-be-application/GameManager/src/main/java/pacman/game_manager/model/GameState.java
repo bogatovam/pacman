@@ -1,7 +1,6 @@
 package pacman.game_manager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javafx.util.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

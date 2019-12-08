@@ -3,15 +3,21 @@ import { GameState, initialGameState } from "src/app/game/store/game.store";
 
 export function reducer(state: GameState = initialGameState, action: GameActions): GameState {
   switch (action.type) {
-    case GameActionsTypes.GET_MESSAGE_FROM_EFFECT: {
-      console.log("effect");
-      return state;
+    case GameActionsTypes.START_NEW_GAME: {
+      return {
+        ...state,
+        loading: true,
+      };
     }
 
-    case GameActionsTypes.GET_MESSAGE_FROM_REDUCER: {
-      console.log("reducer");
-      return state;
+    case GameActionsTypes.START_NEW_GAME_SUCCESS: {
+      return {
+        ...state,
+        playerId: action.payload,
+        loading: false,
+      };
     }
+
     default:
       return state;
   }
