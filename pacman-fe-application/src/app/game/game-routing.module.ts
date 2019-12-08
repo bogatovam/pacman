@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { GameComponent } from "src/app/game/components/game/game.component";
+import { GamePanelComponent } from "src/app/game/components/game-panel/game-panel.component";
 
 const GAME_ROUTES = [
   {
-    path: 'test', component: GameComponent,
+    path: 'game-panel', component: GamePanelComponent,
   },
 ];
 

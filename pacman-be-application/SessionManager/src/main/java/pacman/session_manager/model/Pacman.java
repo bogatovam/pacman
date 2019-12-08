@@ -1,6 +1,5 @@
 package pacman.session_manager.model;
 
-import javafx.util.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

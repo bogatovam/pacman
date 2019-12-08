@@ -18,8 +18,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule,
     GameModule,
+    AppRoutingModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
   ],

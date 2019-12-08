@@ -1,19 +1,21 @@
 import { Action } from "@ngrx/store";
 
 export enum GameActionsTypes {
-  GET_MESSAGE_FROM_REDUCER = '[Game] get message from reducer',
-  GET_MESSAGE_FROM_EFFECT = '[Game] get message from effect',
+  START_NEW_GAME = '[Game] Start new game',
+  START_NEW_GAME_SUCCESS = '[Game] Start new game success',
 }
 
-export class MessageFromReducer implements Action {
-  readonly type = GameActionsTypes.GET_MESSAGE_FROM_REDUCER;
+export class StartNewGame implements Action {
+  readonly type = GameActionsTypes.START_NEW_GAME;
 }
 
-export class MessageFromEffect implements Action {
-  readonly type = GameActionsTypes.GET_MESSAGE_FROM_EFFECT;
+export class StartNewGameSuccess implements Action {
+  readonly type = GameActionsTypes.START_NEW_GAME_SUCCESS;
+
+  constructor(public payload: string) { }
 }
 
 export type GameActions =
-  MessageFromReducer |
-  MessageFromEffect
-;
+  StartNewGame |
+  StartNewGameSuccess
+  ;
