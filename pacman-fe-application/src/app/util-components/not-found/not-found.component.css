@@ -1,0 +1,31 @@
+
+.error-container {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 60vh;
+  color: white;
+}
+
+.error-panel {
+  min-width: 185px;
+  max-width: 385px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 3% 5% 3%;
+  background: #00063d;
+
+  border-radius: 15px;
+  border: 15px white;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.error-title {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
