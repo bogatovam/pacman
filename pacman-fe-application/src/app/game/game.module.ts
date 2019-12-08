@@ -6,9 +6,10 @@ import { GameRoutingModule } from "src/app/game/game-routing.module";
 import { GameEffects } from "src/app/game/store/game.effects";
 import * as fromGame from "src/app/game/store/game.reducers";
 import { GameComponent } from './components/game/game.component';
+import { GamePanelComponent } from './components/game-panel/game-panel.component';
 
 @NgModule({
-  declarations: [GameComponent],
+  declarations: [GameComponent, GamePanelComponent],
   imports: [
     CommonModule,
     GameRoutingModule,
