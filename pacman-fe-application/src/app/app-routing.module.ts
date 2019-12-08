@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from "src/app/util-components/not-found/not-found.component";
 
 const APP_ROUTES = [
-  {path: '**', component: NotFoundComponent}
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
