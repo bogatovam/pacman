@@ -5,7 +5,9 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { reducers } from "src/app/app.reducers";
+import { AuthModule } from "src/app/auth/auth.module";
 import { GameModule } from "src/app/game/game.module";
+import { SocketService } from "src/app/services/socket.service";
 import { NotFoundComponent } from "src/app/util-components/not-found/not-found.component";
 
 import { AppComponent } from './app.component';
@@ -18,12 +20,13 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     RouterModule,
+    AuthModule,
     GameModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

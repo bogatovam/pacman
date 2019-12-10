@@ -30,6 +30,7 @@ public class OpeningSessionHandler implements WebSocketHandler {
                 .getQueryParams()
                 .get("userId")
                 .get(0);
+        System.out.println(userId);
         Flux<WebSocketMessage> messages = sessionFlux
                 .filter(session -> userId != null && session.getPlayers().stream()
                         .map(User::getId).collect(Collectors.toList()).contains(userId))

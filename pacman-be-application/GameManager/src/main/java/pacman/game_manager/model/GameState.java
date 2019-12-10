@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class GameState {
     private String id = UUID.randomUUID().toString();
-    private List<Pacman> pacmen;
+    private List<Pacman> pacman;
     private List<Ghost> ghosts;
     private CellType[][] cellMatrix;
     private Integer level = 1;
@@ -27,14 +27,14 @@ public class GameState {
     enum CellType {EMPTY, SCORE, WALL}
 
     public GameState(List<User> players) throws Exception {
-        pacmen = new ArrayList<>();
+        pacman = new ArrayList<>();
         if (players.size() > 4)
             throw new Exception("A lot of players for game");
         for (int i = 0; i < players.size(); ++i) {
             // TODO: пределить начальное расположение пакманов и скорость
             Point coodrs = new Point(0.0, 0.0);
             Point speed = new Point(0.0, 0.0);
-            pacmen.add(new Pacman(coodrs, speed, Pacman.Color.values()[i], players.get(i)));
+            pacman.add(new Pacman(coodrs, speed, Pacman.Color.values()[i], players.get(i)));
         }
         ghosts = new ArrayList<>();
         for (int i = 0; i < 4; ++i) {
@@ -53,7 +53,7 @@ public class GameState {
     }
 
     public void update(PlayerAction playerAction) {
-        Pacman pacman = pacmen.stream()
+        Pacman pacman = this.pacman.stream()
                 .filter(player -> player.getUser().getId().equals(playerAction.getPlayerId()))
                 .findFirst().orElse(null);
         update();

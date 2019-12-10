@@ -26,6 +26,6 @@ import { GameComponent } from './components/game/game.component';
       useClass: HttpErrorInterceptor,
       multi: true
     },
-  ]
+  ],
 })
 export class GameModule { }
