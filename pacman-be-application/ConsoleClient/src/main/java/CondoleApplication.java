@@ -50,7 +50,7 @@ public class CondoleApplication {
             @Override
             public void run() {
                 WebSocketClient client = new ReactorNettyWebSocketClient();
-                client.execute(URI.create(playerURL + "/wait?userId=" + userId), session -> session.receive()
+                client.execute(URI.create("ws://" + playerURL + "/wait?userId=" + userId), session -> session.receive()
                         .map(webSocketMessage -> webSocketMessage.getPayloadAsText())
                         .doOnNext(str -> System.out.println("Opening Socket return result: " + str))
                         .doOnNext(str -> resultForConnecting.set(str))

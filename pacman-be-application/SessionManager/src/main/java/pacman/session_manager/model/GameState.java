@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 public class GameState {
     private String id;
-    private List<Pacman> pacmen;
+    private List<Pacman> pacman;
     private List<Ghost> ghosts;
     private CellType[][] cellMatrix;
     private Integer level;
