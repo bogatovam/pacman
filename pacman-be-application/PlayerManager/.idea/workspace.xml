@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39286831-c7a6-49ae-8aa4-668ec93c3118" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/auth-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/auth.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/models/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/store/auth.actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/store/auth.effects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/store/auth.reducers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/store/auth.selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/auth/store/auth.state.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/delta-resolver.service.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-socket.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.state.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/cell-type" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/color.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/game-object" afterDir="false" />
@@ -14,7 +23,6 @@
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session-game-state.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/socket-messages.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleClient/src/main/java/CondoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/src/main/java/CondoleApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleClient/target/classes/CondoleApplication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/target/classes/CondoleApplication$1.class" afterDir="false" />
@@ -26,12 +34,16 @@
       <change beforePath="$PROJECT_DIR$/../SessionManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SessionManager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SessionManager/src/main/java/pacman/session_manager/model/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SessionManager/src/main/java/pacman/session_manager/model/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.state.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-store.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-store.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game.store.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.effects.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.store.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/services/socket.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/services/socket.service.ts" afterDir="false" />
     </list>

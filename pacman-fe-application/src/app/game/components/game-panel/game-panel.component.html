@@ -1,20 +1,31 @@
-<button
-  mat-flat-button
-  color="primary"
-  (click)="startGame()"
->
-  Start game
-</button>
-<button
-  mat-flat-button
-  color="primary"
->
-  Watch game
-</button>
-<button
-  mat-flat-button
-  color="primary"
-  (click)="connect()"
->
-  Connect
-</button>
+<div *ngIf="!isLoading">
+  <div
+    *ngIf="!isActiveSessionPresent"
+    class="game-panel-menu"
+  >
+    <button
+      mat-flat-button
+      class="game-panel-menu button"
+      color="primary"
+      (click)="startGame()"
+    >
+      Start game
+    </button>
+    <button
+      mat-flat-button
+      class="game-panel-menu button"
+      color="primary"
+      (click)="waitForOtherPlayers()"
+    >
+      Watch game
+    </button>
+  </div>
+
+  <div
+    *ngIf="isActiveSessionPresent"
+    class="game-panel-active"
+  >
+    <game></game>
+  </div>
+</div>
+<div *ngIf="isLoading"> LOADING, PLEASE WAIT</div>

@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { AppState } from "src/app/app.state";
 
 @Component({
-  selector: 'app-game',
+  selector: 'game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })

@@ -2,38 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f25d745c-3ac0-4eaa-bf3a-3e40370891f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/delta-resolver.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-socket.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/cell-type" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/color.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/game-object" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/ghost.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/pacman.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/point.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session-delta.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session-game-state.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/socket-messages.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ConsoleClient/src/main/java/CondoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/src/main/java/CondoleApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ConsoleClient/target/classes/CondoleApplication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/target/classes/CondoleApplication$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GameManager/src/main/java/pacman/game_manager/model/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GameManager/src/main/java/pacman/game_manager/model/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PlayerManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/handler/OpeningSessionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/src/main/java/pacman/player_manager/handler/OpeningSessionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/handler/OpeningSessionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/target/classes/pacman/player_manager/handler/OpeningSessionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pacman/session_manager/model/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.effects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/services/socket.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/services/socket.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game/game.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game/game.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.state.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,7 +27,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/SessionStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
+            <state relative-caret-position="97">
               <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
             </state>
           </provider>
@@ -390,16 +365,15 @@
       <workItem from="1575827480874" duration="2855000" />
       <workItem from="1575914578066" duration="1297000" />
       <workItem from="1575919363580" duration="5490000" />
-      <workItem from="1575998533901" duration="7272000" />
+      <workItem from="1575998533901" duration="7274000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16914000" />
+    <option name="totallyTimeSpent" value="16916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24810892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -410,7 +384,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.61865795" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47954175" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.56305504" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -639,7 +613,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pacman/session_manager/model/SessionStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
+        <state relative-caret-position="97">
           <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
         </state>
       </provider>
