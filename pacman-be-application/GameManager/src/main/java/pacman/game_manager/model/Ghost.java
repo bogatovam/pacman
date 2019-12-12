@@ -47,6 +47,17 @@ public class Ghost extends GameObject {
                 } else if(color.equals(Color.BLUE)) {
                     //BLUE ghost
                     newCoord = pacman.getCoords();
+                    Point pSpeed = pacman.getSpeed();
+                    if(pSpeed.x > 0) {
+                        newCoord.x += 2.0;
+                    } else if(pSpeed.x < 0) {
+                        newCoord.x -= 2.0;
+                    }
+                    if(pSpeed.y > 0) {
+                        newCoord.y += 2.0;
+                    } else if(pSpeed.y < 0) {
+                        newCoord.y -= 2.0;
+                    }
                     double deltaX = newCoord.x - getCoords().x;
                     double deltaY = newCoord.y - getCoords().y;
                     newCoord.x += deltaX;
