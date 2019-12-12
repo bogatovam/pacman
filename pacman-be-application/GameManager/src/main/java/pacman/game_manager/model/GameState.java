@@ -48,7 +48,7 @@ public class GameState {
             // TODO: пределить начальное расположение призраков и скорость
             Point coodrs = new Point(0.0, 0.0);
             Point speed = new Point(0.0, 0.0);
-            ghosts.add(new Ghost(coodrs, speed, Ghost.Color.values()[i]));
+            ghosts.add(new Ghost(coodrs, speed, Ghost.Color.values()[i], this));
         }
         //Generate Standard Cell Matrix
         cellMatrix = createStandardCellMatrix();
@@ -106,6 +106,12 @@ public class GameState {
             else cellRow[i] = CellType.EMPTY;
         }
         return cellRow;
+    }
+
+    public boolean isCrossroads(int x, int y) {
+        if (x < 0 || x > 30 || y < 0 || y > 27) return false;
+        if (cellMatrix[x][y] == CellType.WALL) return true;
+        return false;
     }
 
     public void update() {
