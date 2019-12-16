@@ -60,7 +60,7 @@ public class GameState {
 
         String[] templates = new String[GAME_HEIGHT];
         templates[0]  = "WWWWWWWWWWWWWWWWWWWWWWWWWWWW";
-        templates[1]  = "W************WW************W";
+        templates[1]  = "WE***********WW***********EW";
         templates[2]  = "W*WWWW*WWWWW*WW*WWWWW*WWWW*W";
         templates[3]  = "W*WWWW*WWWWW*WW*WWWWW*WWWW*W";
         templates[4]  = "W*WWWW*WWWWW*WW*WWWWW*WWWW*W";
@@ -88,7 +88,7 @@ public class GameState {
         templates[26] = "W******WW****WW****WW******W";
         templates[27] = "W*WWWWWWWWWW*WW*WWWWWWWWWW*W";
         templates[28] = "W*WWWWWWWWWW*WW*WWWWWWWWWW*W";
-        templates[29] = "W**************************W";
+        templates[29] = "WE************************EW";
         templates[30] = "WWWWWWWWWWWWWWWWWWWWWWWWWWWW";
 
         for(int i = 0; i < GAME_HEIGHT; i++) {
@@ -110,8 +110,18 @@ public class GameState {
 
     public boolean isCrossroads(int x, int y) {
         if (x < 0 || x > 30 || y < 0 || y > 27) return false;
-        if (cellMatrix[x][y] == CellType.WALL) return true;
-        return false;
+        if(cellMatrix[x][y] == CellType.WALL) return false;
+        int numDest = 0;
+        if(!isWall(x-1, y)) numDest++;
+        if(!isWall(x+1, y)) numDest++;
+        if(!isWall(x, y-1)) numDest++;
+        if(!isWall(x, y+1)) numDest++;
+        return numDest >= 3;
+    }
+
+    public boolean isWall(int x, int y) {
+        if (x < 0 || x > 30 || y < 0 || y > 27) return true;
+        return cellMatrix[x][y] == CellType.WALL;
     }
 
     public void update() {
@@ -123,7 +133,7 @@ public class GameState {
         Pacman pacman = this.pacman.stream()
                 .filter(player -> player.getUser().getId().equals(playerAction.getPlayerId()))
                 .findFirst().orElse(null);
-        update();
+        //update();
         if (pacman != null) {
             // TODO: определить длину вектора скорости
             pacman.setSpeed(playerAction.getSpeedVector());
