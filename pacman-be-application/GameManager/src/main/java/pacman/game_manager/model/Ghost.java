@@ -33,7 +33,6 @@ public class Ghost extends GameObject {
             if(gameState.isCrossroads(x, y)) {
                 Pacman pacman = getNearPacman();
                 Point newCoord = null;
-
                 if(color.equals(Color.RED)) {
                     //RED Ghost
                     newCoord = pacman.getCoords();
@@ -77,12 +76,44 @@ public class Ghost extends GameObject {
                         newCoord.y -= 4.0;
                     }
                 }
-                setNewSpeed(newCoord);
+                setNewSpeedInCrossroad(newCoord);
             } else {
-                //Just go to next coords
-                Point coords = getCoords();
-                coords.x += getSpeed().x * STEP;
-                coords.y += getCoords().y * STEP;
+                //Check rotate ghost and
+                //just go to next coords
+                Point prevSpeed = getSpeed();
+                boolean left = gameState.isWall(x, y-1);
+                boolean up = gameState.isWall(x-1, y);
+                boolean right = gameState.isWall(x, y+1);
+                boolean down = gameState.isWall(x+1, y);
+                if(prevSpeed.x > 0) {
+                    double arg = Math.abs(prevSpeed.x);
+                    //Ghost moved down can't go up
+                    if(left) setSpeed(new Point(0.0, -arg));
+                    else if(right) setSpeed(new Point(0.0, arg));
+                    else if(down) setSpeed(new Point(arg, 0.0));
+                    else setSpeed(new Point(-arg, 0.0));
+                } else if(prevSpeed.x < 0) {
+                    double arg = Math.abs(prevSpeed.x);
+                    //Ghost moved up can't go down
+                    if(left) setSpeed(new Point(0.0, -arg));
+                    else if(up) setSpeed(new Point(-arg, 0.0));
+                    else if(right) setSpeed(new Point(0.0, arg));
+                    else setSpeed(new Point(arg, 0.0));
+                } else if(prevSpeed.y > 0) {
+                    double arg = Math.abs(prevSpeed.y);
+                    //Ghost moved right can't go left
+                    if(up) setSpeed(new Point(-arg, 0.0));
+                    else if (right) setSpeed(new Point(0.0, arg));
+                    else if(down) setSpeed(new Point(arg, 0.0));
+                    else setSpeed(new Point(0.0, -arg));
+                } else if(prevSpeed.y < 0) {
+                    double arg = Math.abs(prevSpeed.y);
+                    //Ghost moved left can't go right
+                    if(left) setSpeed(new Point(0.0, -arg));
+                    else if(up) setSpeed(new Point(-arg, 0.0));
+                    else if(down) setSpeed(new Point(arg, 0.0));
+                    else setSpeed(new Point(0.0, arg));
+                }
             }
         } else {
             //Just go to next coords
@@ -105,9 +136,95 @@ public class Ghost extends GameObject {
         return nearPacman;
     }
 
-    private void setNewSpeed(Point destination) {
+    //ONLY CROSSROAD
+    private void setNewSpeedInCrossroad(Point destination) {
         Point prevSpeed = getSpeed();
-        //TODO setNewSpeed
+        int x = Point.DoubleToNearInt(getCoords().x);
+        int y = Point.DoubleToNearInt(getCoords().y);
+        //Minimum 3 true
+        boolean left = gameState.isWall(x, y-1);
+        boolean up = gameState.isWall(x-1, y);
+        boolean right = gameState.isWall(x, y+1);
+        boolean down = gameState.isWall(x+1, y);
+        double fromLeft = new Point(getCoords().x, getCoords().y - 1.0).getDistance(destination);
+        double fromUp = new Point(getCoords().x - 1.0, getCoords().y).getDistance(destination);
+        double fromRight = new Point(getCoords().x, getCoords().y + 1.0).getDistance(destination);
+        double fromDown = new Point(getCoords().x + 1.0, getCoords().y).getDistance(destination);
+        if(prevSpeed.x > 0) {
+            double arg = Math.abs(prevSpeed.x);
+            //Ghost moved down can't go up
+            if(left && right && down) {
+                //go left
+                if(fromLeft <= fromDown && fromLeft <= fromRight) setSpeed(new Point(0.0, -arg));
+                //go down
+                else if(fromDown <= fromLeft && fromDown <= fromRight) setSpeed(new Point(arg, 0.0));
+                //go right
+                else new Point(0.0, arg);
+            } else if(left && right) {
+                if(fromLeft <= fromRight) setSpeed(new Point(0.0, -arg));
+                else new Point(0.0, arg);
+            } else if(left && down) {
+                if(fromLeft <= fromDown) setSpeed(new Point(0.0, -arg));
+                else new Point(arg, 0.0);
+            } else {
+                if(fromDown <= fromRight) setSpeed(new Point(arg, 0.0));
+                else new Point(0.0, arg);
+            }
+        } else if(prevSpeed.x < 0) {
+            //Ghost moved up can't go down
+            double arg = Math.abs(prevSpeed.x);
+            if(left && up && right) {
+                //go left
+                if(fromLeft <= fromRight && fromLeft <= fromUp) setSpeed(new Point(0.0, -arg));
+                //go up
+                else if(fromUp <= fromLeft && fromUp <= fromRight) setSpeed(new Point(-arg, 0.0));
+                //go right
+                else setSpeed(new Point(0.0, arg));
+            } else if(left && up) {
+                if(fromLeft <= fromUp) setSpeed(new Point(0.0, -arg));
+                else setSpeed(new Point(-arg, 0.0));
+            } else if(left && right) {
+                if(fromLeft <= fromRight) setSpeed(new Point(0.0, -arg));
+                else setSpeed(new Point(0.0, arg));
+            } else {
+                if(fromUp <= fromRight) setSpeed(new Point(-arg, 0.0));
+                else setSpeed(new Point(0.0, arg));
+            }
+        } else if(prevSpeed.y > 0) {
+            //Ghost moved right can't go left
+            double arg = Math.abs(prevSpeed.y);
+            if(up && right && down) {
+                if(fromUp <= fromDown && fromUp <= fromRight) setSpeed(new Point(-arg, 0.0));
+                else if(fromRight <= fromUp && fromRight <= fromRight) setSpeed(new Point(arg, 0.0));
+                else setSpeed(new Point(0.0, arg));
+            } else if(up && right) {
+                if(fromUp <= fromRight) setSpeed(new Point(-arg, 0.0));
+                else setSpeed(new Point(0.0, arg));
+            } else if(up && down) {
+                if(fromUp <= fromDown) setSpeed(new Point(-arg, 0.0));
+                else setSpeed(new Point(arg, 0.0));
+            } else {
+                if(fromRight <= fromDown) setSpeed(new Point(0.0, arg));
+                else setSpeed(new Point(arg, 0.0));
+            }
+        } else if(prevSpeed.y < 0) {
+            //Ghost moved left can't go right
+            double arg = Math.abs(prevSpeed.y);
+            if(left && up && down) {
+                if(fromLeft <= fromUp && fromLeft <= fromDown) setSpeed(new Point(0.0, -arg));
+                else if(fromUp <= fromLeft && fromUp <= fromDown) setSpeed(new Point(-arg, 0.0));
+                else setSpeed(new Point(arg, 0.0));
+            } else if(left && up) {
+                if(fromLeft <= fromUp) setSpeed(new Point(0.0, -arg));
+                else setSpeed(new Point(-arg, 0.0));
+            } else if(left && down) {
+                if(fromLeft <= fromDown) setSpeed(new Point(0.0, -arg));
+                else setSpeed(new Point(arg, 0.0));
+            } else {
+                if(fromUp <= fromDown) setSpeed(new Point(-arg, 0.0));
+                else setSpeed(new Point(arg, 0.0));
+            }
+        }
     }
 
     enum Color {RED, YELLOW, BLUE, PINK};
