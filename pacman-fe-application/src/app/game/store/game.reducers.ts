@@ -17,17 +17,24 @@ export function reducer(state: GameState = initialGameState, action: GameActions
       };
     }
 
-    case GameActionsTypes.WAIT_FOR_OTHER_PLAYERS_SUCCESS: {
+    case GameActionsTypes.START_NEW_GAME_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+
+    case GameActionsTypes.SET_ACTIVE_SESSION_ID: {
       return {
         ...state,
         activeSession: {id: action.payload},
       };
     }
 
-    case GameActionsTypes.START_NEW_GAME_SUCCESS: {
+    case GameActionsTypes.SET_MODE: {
       return {
         ...state,
-        loading: false,
+        mode: action.payload
       };
     }
 
