@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { distinctUntilChanged, exhaustMap, map, pluck, switchMap, withLatestFrom } from "rxjs/operators";
 import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { DeltaResolverService } from "src/app/game/services/delta-resolver.service";
 import { GameRestService } from "src/app/game/services/game-rest.service";
 import { GameSocketService } from "src/app/game/services/game-socket.service";
-import { GameStoreService } from "src/app/game/services/game-store.service";
-import { GameActionsTypes, SavePlayerId, StartCheckingSession, WaitForOtherPlayers, WaitForOtherPlayersSuccess } from "src/app/game/store/game.actions";
+import { GameActionsTypes, SavePlayerId, SetActiveSessionId, SetMode, StartCheckingSession, WaitForOtherPlayers } from "src/app/game/store/game.actions";
+import { Mode } from "src/app/game/store/game.state";
 import { SessionDelta } from "src/app/models/session-delta";
 
 @Injectable()
@@ -24,6 +24,7 @@ export class GameEffects {
       );
     }),
     map(([playerId, userId]: [string, string]) => [
+      new SetMode(Mode.PLAY),
       new SavePlayerId(playerId),
       new WaitForOtherPlayers(userId),
     ]),
@@ -36,7 +37,7 @@ export class GameEffects {
     exhaustMap((userId: string) => this.gameSocketService.buildWaitingGameSocket(userId)),
     distinctUntilChanged(),
     map((sessionId: string) => [
-      new WaitForOtherPlayersSuccess(sessionId),
+      new SetActiveSessionId(sessionId),
       new StartCheckingSession(sessionId),
     ])
   );
@@ -47,6 +48,23 @@ export class GameEffects {
     pluck("payload"),
     exhaustMap((sessionId: string) => this.gameSocketService.buildCheckSessionSocket(sessionId)),
     map((delta: SessionDelta) => this.sessionDeltaResolver.resolve(delta))
+  );
+
+  @Effect()
+  watchGame: Observable<Action[]> = this.actions$.pipe(
+    ofType(GameActionsTypes.WATCH_GAME),
+    pluck("payload"),
+    withLatestFrom(this.authStoreService.retrieveUserId()),
+    exhaustMap(([sessionId, userId]: [string, string]) =>
+      this.gameRestService.connectToSession(sessionId, userId).pipe(
+        map(() => sessionId)
+      )
+    ),
+    map((sessionId: string) => [
+      new SetMode(Mode.WATCH),
+      new SetActiveSessionId(sessionId),
+      new StartCheckingSession(sessionId),
+    ])
   );
 
   constructor(private actions$: Actions,

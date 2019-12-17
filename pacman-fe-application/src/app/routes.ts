@@ -11,5 +11,7 @@ export const port = {
 export const routes = {
   newGame: protocolPrefix.http + port.player + "/queue/",
   wait: protocolPrefix.ws + port.player + "/wait?userId=",
+  getAllSession: protocolPrefix.http + port.session + "/session",
+  connectToSession: protocolPrefix.http + port.session + "/session/",
   checkSession: protocolPrefix.ws + port.session + "/change?sessionId=",
 };
