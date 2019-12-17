@@ -116,10 +116,44 @@ public class Ghost extends GameObject {
                 }
             }
         } else {
-            //Just go to next coords
-            Point coords = getCoords();
-            coords.x += getSpeed().x * STEP;
-            coords.y += getCoords().y * STEP;
+            //Check rotate ghost and
+            //just go to next coords
+            Point prevSpeed = getSpeed();
+            int x = Point.DoubleToNearInt(getCoords().x);
+            int y = Point.DoubleToNearInt(getCoords().y);
+            boolean left = gameState.isWall(x, y-1);
+            boolean up = gameState.isWall(x-1, y);
+            boolean right = gameState.isWall(x, y+1);
+            boolean down = gameState.isWall(x+1, y);
+            if(prevSpeed.x > 0) {
+                double arg = Math.abs(prevSpeed.x);
+                //Ghost moved down can't go up
+                if(left) setSpeed(new Point(0.0, -arg));
+                else if(right) setSpeed(new Point(0.0, arg));
+                else if(down) setSpeed(new Point(arg, 0.0));
+                else setSpeed(new Point(-arg, 0.0));
+            } else if(prevSpeed.x < 0) {
+                double arg = Math.abs(prevSpeed.x);
+                //Ghost moved up can't go down
+                if(left) setSpeed(new Point(0.0, -arg));
+                else if(up) setSpeed(new Point(-arg, 0.0));
+                else if(right) setSpeed(new Point(0.0, arg));
+                else setSpeed(new Point(arg, 0.0));
+            } else if(prevSpeed.y > 0) {
+                double arg = Math.abs(prevSpeed.y);
+                //Ghost moved right can't go left
+                if(up) setSpeed(new Point(-arg, 0.0));
+                else if (right) setSpeed(new Point(0.0, arg));
+                else if(down) setSpeed(new Point(arg, 0.0));
+                else setSpeed(new Point(0.0, -arg));
+            } else if(prevSpeed.y < 0) {
+                double arg = Math.abs(prevSpeed.y);
+                //Ghost moved left can't go right
+                if(left) setSpeed(new Point(0.0, -arg));
+                else if(up) setSpeed(new Point(-arg, 0.0));
+                else if(down) setSpeed(new Point(arg, 0.0));
+                else setSpeed(new Point(0.0, arg));
+            }
         }
     }
 
