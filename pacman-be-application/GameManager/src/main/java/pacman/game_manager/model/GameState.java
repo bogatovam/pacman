@@ -28,6 +28,10 @@ public class GameState {
     @JsonIgnore
     private static final int GAME_HEIGHT = 31;
 
+    /** Const field - Point by one Score */
+    @JsonIgnore
+    private static final int POINT_BY_SCORE = 100;
+
     @JsonIgnore
     private Date startTime = new Date();
 
@@ -41,7 +45,7 @@ public class GameState {
             // TODO: пределить начальное расположение пакманов и скорость
             Point coodrs = new Point(0.0, 0.0);
             Point speed = new Point(0.0, 0.0);
-            pacman.add(new Pacman(coodrs, speed, Pacman.Color.values()[i], players.get(i)));
+            pacman.add(new Pacman(coodrs, speed, Pacman.Color.values()[i], players.get(i), this));
         }
         ghosts = new ArrayList<>();
         for (int i = 0; i < 4; ++i) {
@@ -124,9 +128,52 @@ public class GameState {
         return cellMatrix[x][y] == CellType.WALL;
     }
 
+    public int pickUpScore(int x, int y) {
+        if (x < 0 || x > 30 || y < 0 || y > 27) return 0;
+        else if(getCellMatrix()[x][y] == CellType.SCORE) {
+            getCellMatrix()[x][y] = CellType.EMPTY;
+            return POINT_BY_SCORE;
+        } else return 0;
+    }
+
+    public boolean isGhost(int x, int y) {
+        for (Ghost g: ghosts) {
+            int gX = Point.DoubleToNearInt(g.getCoords().x);
+            int gY = Point.DoubleToNearInt(g.getCoords().y);
+            if (gX == x && gY == y) return true;
+        }
+        return false;
+    }
+
     public void update() {
         time = new Date().getTime() - startTime.getTime();
-        //TODO: обновление
+        //All Packman go
+        for (Pacman p:pacman) {
+            p.go();
+        }
+        //All Ghost go
+        for(Ghost g: ghosts) {
+            g.go();
+        }
+    }
+
+    public boolean canPacmanGoTo(Pacman p,int x, int y) {
+        if(isWall(x, y)) return false;
+        else {
+            for (Pacman pacman: pacman) {
+                if(p!=pacman) {
+                    double speedX = pacman.getSpeed().x;
+                    double speedY = pacman.getSpeed().y;
+                    int nextX = 0, nextY = 0;
+                    if(speedX > 0) nextX = 1;
+                    if(speedX < 0) nextX = -1;
+                    if(speedY > 0) nextX = 1;
+                    if(speedY < 0) nextY = -1;
+                    if(pacman.getCoords().x + nextX == x && pacman.getCoords().y + nextY == y) return false;
+                }
+            }
+            return true;
+        }
     }
 
     public void update(PlayerAction playerAction) {
@@ -136,7 +183,7 @@ public class GameState {
         //update();
         if (pacman != null) {
             // TODO: определить длину вектора скорости
-            pacman.setSpeed(playerAction.getSpeedVector());
+            pacman.updateSpeed(playerAction.getSpeedVector());
         }
     }
 }

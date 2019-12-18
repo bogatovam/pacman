@@ -14,6 +14,10 @@ public class Ghost extends GameObject {
     private Color color;
 
     @JsonIgnore
+    /** Default Point */
+    private Point DefaultPoint;
+
+    @JsonIgnore
     /** Game State for navigating */
     private GameState gameState;
     @JsonIgnore
@@ -24,16 +28,25 @@ public class Ghost extends GameObject {
         super(coords, speed);
         this.color = color;
         this.gameState = gameState;
-    }
+        if(color.equals(Color.RED)) {
+            DefaultPoint = new Point(-1.0, 32.0);
+        } else if(color.equals(Color.BLUE)) {
+            DefaultPoint = new Point(28.0, 32.0);
+        } else if(color.equals(Color.PINK)) {
+            DefaultPoint = new Point(-1.0, -1.0);
+        } else DefaultPoint = new Point(28.0, -1.0);
+     }
 
-    private void go() {
+    public void go() {
         if(getCoords().isCenter()) {
             int x = Point.DoubleToNearInt(getCoords().x);
             int y = Point.DoubleToNearInt(getCoords().y);
             if(gameState.isCrossroads(x, y)) {
                 Pacman pacman = getNearPacman();
                 Point newCoord = null;
-                if(color.equals(Color.RED)) {
+                if(pacman == null) {
+                    newCoord = DefaultPoint;
+                } else if(color.equals(Color.RED)) {
                     //RED Ghost
                     newCoord = pacman.getCoords();
                 } else if(color.equals(Color.YELLOW)) {
@@ -41,8 +54,7 @@ public class Ghost extends GameObject {
                     if(getCoords().getDistance(pacman.getCoords()) > 8) {
                         newCoord = pacman.getCoords();
                     } else
-                        //This is DEFAULT COORDS for yellow ghost
-                        newCoord = new Point(32.0, 0.0);
+                        newCoord = DefaultPoint;
                 } else if(color.equals(Color.BLUE)) {
                     //BLUE ghost
                     newCoord = pacman.getCoords();
@@ -118,42 +130,10 @@ public class Ghost extends GameObject {
         } else {
             //Check rotate ghost and
             //just go to next coords
-            Point prevSpeed = getSpeed();
-            int x = Point.DoubleToNearInt(getCoords().x);
-            int y = Point.DoubleToNearInt(getCoords().y);
-            boolean left = gameState.isWall(x, y-1);
-            boolean up = gameState.isWall(x-1, y);
-            boolean right = gameState.isWall(x, y+1);
-            boolean down = gameState.isWall(x+1, y);
-            if(prevSpeed.x > 0) {
-                double arg = Math.abs(prevSpeed.x);
-                //Ghost moved down can't go up
-                if(left) setSpeed(new Point(0.0, -arg));
-                else if(right) setSpeed(new Point(0.0, arg));
-                else if(down) setSpeed(new Point(arg, 0.0));
-                else setSpeed(new Point(-arg, 0.0));
-            } else if(prevSpeed.x < 0) {
-                double arg = Math.abs(prevSpeed.x);
-                //Ghost moved up can't go down
-                if(left) setSpeed(new Point(0.0, -arg));
-                else if(up) setSpeed(new Point(-arg, 0.0));
-                else if(right) setSpeed(new Point(0.0, arg));
-                else setSpeed(new Point(arg, 0.0));
-            } else if(prevSpeed.y > 0) {
-                double arg = Math.abs(prevSpeed.y);
-                //Ghost moved right can't go left
-                if(up) setSpeed(new Point(-arg, 0.0));
-                else if (right) setSpeed(new Point(0.0, arg));
-                else if(down) setSpeed(new Point(arg, 0.0));
-                else setSpeed(new Point(0.0, -arg));
-            } else if(prevSpeed.y < 0) {
-                double arg = Math.abs(prevSpeed.y);
-                //Ghost moved left can't go right
-                if(left) setSpeed(new Point(0.0, -arg));
-                else if(up) setSpeed(new Point(-arg, 0.0));
-                else if(down) setSpeed(new Point(arg, 0.0));
-                else setSpeed(new Point(0.0, arg));
-            }
+            double deltaX = getSpeed().x * STEP;
+            double deltaY = getSpeed().y * STEP;
+            getCoords().x += deltaX;
+            getCoords().y += deltaY;
         }
     }
 
