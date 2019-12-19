@@ -50,26 +50,32 @@ public class GameState {
             throw new Exception("A lot of players for game");
 
         /** Pacman's coords */
-        Point FirstPacmanCoodrs = new Point(1.0, 1.0);
-        Point FirstPacmanSpeed = new Point(0.0, 0.0);
-        pacman.add(new Pacman(FirstPacmanCoodrs, FirstPacmanSpeed, Pacman.Color.RED, players.get(0), this));
+        if(players.size() >= 1) {
+            Point FirstPacmanCoodrs = new Point(1.0, 1.0);
+            Point FirstPacmanSpeed = new Point(0.0, 0.0);
+            pacman.add(new Pacman(FirstPacmanCoodrs, FirstPacmanSpeed, Pacman.Color.RED, players.get(0), this));
 
-        /*
-        Point SecondPacmanCoodrs = new Point(1.0, 26.0);
-        Point SecondPacmanSpeed = new Point(0.0, 0.0);
-        pacman.add(new Pacman(SecondPacmanCoodrs, SecondPacmanSpeed, Pacman.Color.YELLOW, players.get(1), this));
+            if(players.size() >= 2) {
+                Point SecondPacmanCoodrs = new Point(1.0, 26.0);
+                Point SecondPacmanSpeed = new Point(0.0, 0.0);
+                pacman.add(new Pacman(SecondPacmanCoodrs, SecondPacmanSpeed, Pacman.Color.YELLOW, players.get(1), this));
 
-        Point ThirdPacmanCoodrs = new Point(29.0, 1.0);
-        Point ThirdPacmanSpeed = new Point(0.0, 0.0);
-        pacman.add(new Pacman(ThirdPacmanCoodrs, ThirdPacmanSpeed, Pacman.Color.BLUE, players.get(2), this));
+                if(players.size() >= 3) {
+                    Point ThirdPacmanCoodrs = new Point(29.0, 1.0);
+                    Point ThirdPacmanSpeed = new Point(0.0, 0.0);
+                    pacman.add(new Pacman(ThirdPacmanCoodrs, ThirdPacmanSpeed, Pacman.Color.BLUE, players.get(2), this));
+                }
 
-        Point FourthPacmanCoodrs = new Point(29.0, 26.0);
-        Point FourthPacmanSpeed = new Point(0.0, 0.0);
-        pacman.add(new Pacman(FourthPacmanCoodrs, FourthPacmanSpeed, Pacman.Color.PINK, players.get(3), this));
-        */
+                if(players.size() == 4) {
+                    Point FourthPacmanCoodrs = new Point(29.0, 26.0);
+                    Point FourthPacmanSpeed = new Point(0.0, 0.0);
+                    pacman.add(new Pacman(FourthPacmanCoodrs, FourthPacmanSpeed, Pacman.Color.PINK, players.get(3), this));
+                }
+            }
+        }
+
 
         /** Ghost's coords */
-        /*
         Point RedGhostCoodrs = new Point(11.0, 9.0);
         Point RedGhostSpeed = new Point(0.0, 0.0);
         ghosts.add(new Ghost(RedGhostCoodrs, RedGhostSpeed, Ghost.Color.RED, this));
@@ -85,7 +91,6 @@ public class GameState {
         Point YellowGhostCoords = new Point(17.0, 18.0);
         Point YellowGhostSpeed = new Point(0.0, 0.0);
         ghosts.add(new Ghost(YellowGhostCoords, YellowGhostSpeed, Ghost.Color.YELLOW, this));
-        */
 
         //Generate Standard Cell Matrix
         cellMatrix = createStandardCellMatrix();
@@ -216,8 +221,6 @@ public class GameState {
                 .findFirst().orElse(null);
 
         if (pacman != null) {
-            /** ????????? */
-            // TODO: определить длину вектора скорости
             pacman.updateSpeed(playerAction.getSpeedVector());
         }
     }
