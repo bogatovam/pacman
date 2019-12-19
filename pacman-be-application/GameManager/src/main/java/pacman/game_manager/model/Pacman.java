@@ -16,6 +16,16 @@ public class Pacman extends GameObject {
 
     @JsonIgnore
     private Point newSpeed;
+    @JsonIgnore
+    /** Default Point */
+    private Point DefaultCoords;
+    @JsonIgnore
+    /** INVISIBLE FOR GHOST */
+    private boolean isInvisible = false;
+    @JsonIgnore
+    private int invisibleGo = 0;
+    @JsonIgnore
+    private boolean isDeath = false;
 
     @JsonIgnore
     /** STEP for speed */
@@ -24,11 +34,12 @@ public class Pacman extends GameObject {
     /** Game State for navigating */
     private GameState gameState;
 
-    public Pacman(Point score, Point speed, Color color, User user, GameState gameState) {
-        super(score, speed);
+    public Pacman(Point coords, Point speed, Color color, User user, GameState gameState) {
+        super(coords, speed);
         this.color = color;
         this.user = user;
-        newSpeed = new Point(getSpeed().x, getSpeed().y);
+        newSpeed = new Point(speed.x, speed.y);
+        DefaultCoords = new Point(coords.x, coords.y);
         this.gameState = gameState;
     }
 
@@ -69,10 +80,16 @@ public class Pacman extends GameObject {
         getCoords().x += deltaX;
         getCoords().y += deltaY;
         if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y))) lifeCount--;
+        if(invisibleGo == 0) {
+            if(isInvisible && !isDeath) isInvisible = false;
+        } else invisibleGo--;
         if(lifeCount > 0) {
-            //TODO setNewCoords
+            setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
+            invisibleGo = 20;
         } else {
-            //TODO DEATH
+            setCoords(new Point(-10.0, -10.0));
+            isInvisible = true;
+            isDeath = true;
         }
     }
 

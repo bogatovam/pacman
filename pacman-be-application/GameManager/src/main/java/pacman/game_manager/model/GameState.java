@@ -40,15 +40,33 @@ public class GameState {
 
     public GameState(List<User> players) throws Exception {
 
-        /*
+        if(players.size() == 0) {
+            players.add(null);
+            players.add(null);
+            players.add(null);
+            players.add(null);
+        }
         if (players.size() > 4)
             throw new Exception("A lot of players for game");
-        //TODO Pacman's coords
-        Point PacmanCoodrs = new Point(1.0, 1.0);
-        Point PacmanSpeed = new Point(0.0, 0.0);
-        pacman.add(new Pacman(PacmanCoodrs, PacmanSpeed, Pacman.Color.RED, players.get(0), this));
-         */
 
+        /** Pacman's coords */
+        Point FirstPacmanCoodrs = new Point(1.0, 1.0);
+        Point FirstPacmanSpeed = new Point(0.0, 0.0);
+        pacman.add(new Pacman(FirstPacmanCoodrs, FirstPacmanSpeed, Pacman.Color.RED, players.get(0), this));
+
+        Point SecondPacmanCoodrs = new Point(1.0, 26.0);
+        Point SecondPacmanSpeed = new Point(0.0, 0.0);
+        pacman.add(new Pacman(SecondPacmanCoodrs, SecondPacmanSpeed, Pacman.Color.YELLOW, players.get(1), this));
+
+        Point ThirdPacmanCoodrs = new Point(29.0, 1.0);
+        Point ThirdPacmanSpeed = new Point(0.0, 0.0);
+        pacman.add(new Pacman(ThirdPacmanCoodrs, ThirdPacmanSpeed, Pacman.Color.BLUE, players.get(2), this));
+
+        Point FourthPacmanCoodrs = new Point(29.0, 26.0);
+        Point FourthPacmanSpeed = new Point(0.0, 0.0);
+        pacman.add(new Pacman(FourthPacmanCoodrs, FourthPacmanSpeed, Pacman.Color.PINK, players.get(3), this));
+
+        /** Ghost's coords */
         Point RedGhostCoodrs = new Point(11.0, 9.0);
         Point RedGhostSpeed = new Point(0.0, 0.0);
         ghosts.add(new Ghost(RedGhostCoodrs, RedGhostSpeed, Ghost.Color.RED, this));
@@ -168,7 +186,7 @@ public class GameState {
         }
     }
 
-    public boolean canPacmanGoTo(Pacman p,int x, int y) {
+    public boolean canPacmanGoTo(Pacman p, int x, int y) {
         if(isWall(x, y)) return false;
         else {
             for (Pacman pacman: pacman) {
@@ -193,22 +211,33 @@ public class GameState {
                 .findFirst().orElse(null);
         //update();
         if (pacman != null) {
+            /** ????????? */
             // TODO: определить длину вектора скорости
             pacman.updateSpeed(playerAction.getSpeedVector());
         }
     }
 
-    /** TEST MAIN /
+    /** TEST MAIN*/
     public static void main(String[] a) throws Exception {
         GameState state = new GameState(new ArrayList<>());
+        int step = 0;
         while(true) {
-            System.out.println("RED Coords: " + state.getGhosts().get(0).getCoords().x + " " + state.getGhosts().get(0).getCoords().y);
-            System.out.println("BLUE Coords: " + state.getGhosts().get(1).getCoords().x + " " + state.getGhosts().get(1).getCoords().y);
-            System.out.println("PINK Coords: " + state.getGhosts().get(2).getCoords().x + " " + state.getGhosts().get(2).getCoords().y);
-            System.out.println("YELLOW Coords: " + state.getGhosts().get(3).getCoords().x + " " + state.getGhosts().get(3).getCoords().y);
-            System.out.println("---");
+            /** Out for Ghost */
+            if(step % 10 == 0) {
+                System.out.println("RED Coords: " + state.getGhosts().get(0).getCoords().x.floatValue() + " " + state.getGhosts().get(0).getCoords().y.floatValue());
+                System.out.println("BLUE Coords: " + state.getGhosts().get(1).getCoords().x.floatValue() + " " + state.getGhosts().get(1).getCoords().y.floatValue());
+                System.out.println("PINK Coords: " + state.getGhosts().get(2).getCoords().x.floatValue() + " " + state.getGhosts().get(2).getCoords().y.floatValue());
+                System.out.println("YELLOW Coords: " + state.getGhosts().get(3).getCoords().x.floatValue() + " " + state.getGhosts().get(3).getCoords().y.floatValue());
+                System.out.println("---");
+                step = 0;
+            }
+            step++;
             state.update();
-            Thread.sleep(1000);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException  e) {
+                break;
+            }
         }
-    }*/
+    }
 }
