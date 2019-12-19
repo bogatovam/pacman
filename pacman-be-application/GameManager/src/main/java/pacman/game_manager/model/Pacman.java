@@ -36,6 +36,7 @@ public class Pacman extends GameObject {
         if(getCoords().isCenter()) {
             int x = Point.DoubleToNearInt(getCoords().x);
             int y = Point.DoubleToNearInt(getCoords().y);
+            score+= gameState.pickUpScore(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y));
             setSpeed(new Point(0.0, 0.0));
             if(newSpeed.x == 0 && newSpeed.y == 0) {
                 //Pacman don't move
@@ -61,14 +62,12 @@ public class Pacman extends GameObject {
                     setSpeed(new Point(newSpeed.x, newSpeed.y));
                 } else return;
             }
-        } else {
-            //Just go next
-            double deltaX = getSpeed().x * STEP;
-            double deltaY = getSpeed().y * STEP;
-            getCoords().x += deltaX;
-            getCoords().y += deltaY;
         }
-        score+= gameState.pickUpScore(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y));
+        //Just go next
+        double deltaX = getSpeed().x * STEP;
+        double deltaY = getSpeed().y * STEP;
+        getCoords().x += deltaX;
+        getCoords().y += deltaY;
         if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y))) lifeCount--;
         if(lifeCount > 0) {
             //TODO setNewCoords

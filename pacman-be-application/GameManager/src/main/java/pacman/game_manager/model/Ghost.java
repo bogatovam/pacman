@@ -90,14 +90,19 @@ public class Ghost extends GameObject {
                 }
                 setNewSpeedInCrossroad(newCoord);
             } else {
-                //Check rotate ghost and
-                //just go to next coords
+                //Check rotate ghost and set new speed
                 Point prevSpeed = getSpeed();
-                boolean left = gameState.isWall(x, y-1);
-                boolean up = gameState.isWall(x-1, y);
-                boolean right = gameState.isWall(x, y+1);
-                boolean down = gameState.isWall(x+1, y);
-                if(prevSpeed.x > 0) {
+                boolean left = !gameState.isWall(x, y-1);
+                boolean up = !gameState.isWall(x-1, y);
+                boolean right = !gameState.isWall(x, y+1);
+                boolean down = !gameState.isWall(x+1, y);
+                if(prevSpeed.x == 0 && prevSpeed.y == 0) {
+                    //Ghost don't moved
+                    if(left) setSpeed(new Point(0.0, -1.0));
+                    else if(up) setSpeed(new Point(-1.0, 0.0));
+                    else if(right) setSpeed(new Point(0.0, 1.0));
+                    else setSpeed(new Point(1.0, 0.0));
+                } else if(prevSpeed.x > 0) {
                     double arg = Math.abs(prevSpeed.x);
                     //Ghost moved down can't go up
                     if(left) setSpeed(new Point(0.0, -arg));
@@ -127,14 +132,13 @@ public class Ghost extends GameObject {
                     else setSpeed(new Point(0.0, arg));
                 }
             }
-        } else {
-            //Check rotate ghost and
-            //just go to next coords
-            double deltaX = getSpeed().x * STEP;
-            double deltaY = getSpeed().y * STEP;
-            getCoords().x += deltaX;
-            getCoords().y += deltaY;
         }
+        //Check rotate ghost and
+        //just go to next coords
+        double deltaX = getSpeed().x * STEP;
+        double deltaY = getSpeed().y * STEP;
+        getCoords().x += deltaX;
+        getCoords().y += deltaY;
     }
 
     private Pacman getNearPacman() {
@@ -156,15 +160,21 @@ public class Ghost extends GameObject {
         int x = Point.DoubleToNearInt(getCoords().x);
         int y = Point.DoubleToNearInt(getCoords().y);
         //Minimum 3 true
-        boolean left = gameState.isWall(x, y-1);
-        boolean up = gameState.isWall(x-1, y);
-        boolean right = gameState.isWall(x, y+1);
-        boolean down = gameState.isWall(x+1, y);
+        boolean left = !gameState.isWall(x, y-1);
+        boolean up = !gameState.isWall(x-1, y);
+        boolean right = !gameState.isWall(x, y+1);
+        boolean down = !gameState.isWall(x+1, y);
         double fromLeft = new Point(getCoords().x, getCoords().y - 1.0).getDistance(destination);
         double fromUp = new Point(getCoords().x - 1.0, getCoords().y).getDistance(destination);
         double fromRight = new Point(getCoords().x, getCoords().y + 1.0).getDistance(destination);
         double fromDown = new Point(getCoords().x + 1.0, getCoords().y).getDistance(destination);
-        if(prevSpeed.x > 0) {
+        if(prevSpeed.x == 0 && prevSpeed.y == 0) {
+            //Ghost don't moved
+            if(left) setSpeed(new Point(0.0, -1.0));
+            else if(up) setSpeed(new Point(-1.0, 0.0));
+            else if(right) setSpeed(new Point(0.0, 1.0));
+            else setSpeed(new Point(1.0, 0.0));
+        } if(prevSpeed.x > 0) {
             double arg = Math.abs(prevSpeed.x);
             //Ghost moved down can't go up
             if(left && right && down) {

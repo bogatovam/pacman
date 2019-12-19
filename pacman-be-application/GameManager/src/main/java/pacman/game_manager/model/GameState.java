@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class GameState {
     private String id = UUID.randomUUID().toString();
-    private List<Pacman> pacman;
-    private List<Ghost> ghosts;
+    private List<Pacman> pacman = new ArrayList<>();
+    private List<Ghost> ghosts = new ArrayList<>();
     private CellType[][] cellMatrix;
     private Integer level = 1;
     private Long time = 0L;
@@ -38,22 +39,32 @@ public class GameState {
     enum CellType {EMPTY, SCORE, WALL}
 
     public GameState(List<User> players) throws Exception {
-        pacman = new ArrayList<>();
+
+        /*
         if (players.size() > 4)
             throw new Exception("A lot of players for game");
-        for (int i = 0; i < players.size(); ++i) {
-            // TODO: пределить начальное расположение пакманов и скорость
-            Point coodrs = new Point(0.0, 0.0);
-            Point speed = new Point(0.0, 0.0);
-            pacman.add(new Pacman(coodrs, speed, Pacman.Color.values()[i], players.get(i), this));
-        }
-        ghosts = new ArrayList<>();
-        for (int i = 0; i < 4; ++i) {
-            // TODO: пределить начальное расположение призраков и скорость
-            Point coodrs = new Point(0.0, 0.0);
-            Point speed = new Point(0.0, 0.0);
-            ghosts.add(new Ghost(coodrs, speed, Ghost.Color.values()[i], this));
-        }
+        //TODO Pacman's coords
+        Point PacmanCoodrs = new Point(1.0, 1.0);
+        Point PacmanSpeed = new Point(0.0, 0.0);
+        pacman.add(new Pacman(PacmanCoodrs, PacmanSpeed, Pacman.Color.RED, players.get(0), this));
+         */
+
+        Point RedGhostCoodrs = new Point(11.0, 9.0);
+        Point RedGhostSpeed = new Point(0.0, 0.0);
+        ghosts.add(new Ghost(RedGhostCoodrs, RedGhostSpeed, Ghost.Color.RED, this));
+
+        Point BlueGhostCoords = new Point(11.0, 18.0);
+        Point BlueGhostSpeed = new Point(0.0, 0.0);
+        ghosts.add(new Ghost(BlueGhostCoords, BlueGhostSpeed, Ghost.Color.BLUE, this));
+
+        Point PinkGhostCoords = new Point(17.0, 9.0);
+        Point PinkGhostSpeed = new Point(0.0, 0.0);
+        ghosts.add(new Ghost(PinkGhostCoords, PinkGhostSpeed, Ghost.Color.PINK, this));
+
+        Point YellowGhostCoords = new Point(17.0, 18.0);
+        Point YellowGhostSpeed = new Point(0.0, 0.0);
+        ghosts.add(new Ghost(YellowGhostCoords, YellowGhostSpeed, Ghost.Color.YELLOW, this));
+
         //Generate Standard Cell Matrix
         cellMatrix = createStandardCellMatrix();
     }
@@ -148,8 +159,8 @@ public class GameState {
     public void update() {
         time = new Date().getTime() - startTime.getTime();
         //All Packman go
-        for (Pacman p:pacman) {
-            p.go();
+        for (int i = 0; i < pacman.size(); i++) {
+            pacman.get(i).go();
         }
         //All Ghost go
         for(Ghost g: ghosts) {
@@ -186,4 +197,18 @@ public class GameState {
             pacman.updateSpeed(playerAction.getSpeedVector());
         }
     }
+
+    /** TEST MAIN /
+    public static void main(String[] a) throws Exception {
+        GameState state = new GameState(new ArrayList<>());
+        while(true) {
+            System.out.println("RED Coords: " + state.getGhosts().get(0).getCoords().x + " " + state.getGhosts().get(0).getCoords().y);
+            System.out.println("BLUE Coords: " + state.getGhosts().get(1).getCoords().x + " " + state.getGhosts().get(1).getCoords().y);
+            System.out.println("PINK Coords: " + state.getGhosts().get(2).getCoords().x + " " + state.getGhosts().get(2).getCoords().y);
+            System.out.println("YELLOW Coords: " + state.getGhosts().get(3).getCoords().x + " " + state.getGhosts().get(3).getCoords().y);
+            System.out.println("---");
+            state.update();
+            Thread.sleep(1000);
+        }
+    }*/
 }
