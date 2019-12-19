@@ -29,7 +29,7 @@ public class Pacman extends GameObject {
 
     @JsonIgnore
     /** STEP for speed */
-    private static final double STEP = 1.0/10;
+    private static final double STEP = 1d/10;
     @JsonIgnore
     /** Game State for navigating */
     private GameState gameState;
@@ -79,18 +79,22 @@ public class Pacman extends GameObject {
         double deltaY = getSpeed().y * STEP;
         getCoords().x += deltaX;
         getCoords().y += deltaY;
-        if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y))) lifeCount--;
         if(invisibleGo == 0) {
             if(isInvisible && !isDeath) isInvisible = false;
         } else invisibleGo--;
-        if(lifeCount > 0) {
-            setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
-            invisibleGo = 20;
-        } else {
-            setCoords(new Point(-10.0, -10.0));
-            isInvisible = true;
-            isDeath = true;
+        if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y))) {
+            lifeCount--;
+            if(lifeCount > 0) {
+                setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
+                isInvisible = true;
+                invisibleGo = 20;
+            } else {
+                setCoords(new Point(-10.0, -10.0));
+                isInvisible = true;
+                isDeath = true;
+            }
         }
+
     }
 
     public void updateSpeed(Point newSpeed) {
