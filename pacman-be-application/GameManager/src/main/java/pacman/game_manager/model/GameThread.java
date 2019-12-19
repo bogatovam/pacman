@@ -3,6 +3,7 @@ package pacman.game_manager.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import pacman.game_manager.publisher.GamePublisher;
 
 @Data
@@ -14,6 +15,6 @@ public class GameThread extends Thread {
 
     @Override
     public void run() {
-        // TODO: продумать работу в отдльный потоках
+        // TODO: продумать работу в отдельный потоках
     }
 }
