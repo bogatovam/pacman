@@ -44,3 +44,39 @@
   border-radius: 15px;
   border: 15px white;
 }
+
+.session-panel {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 50px;
+}
+
+.session-panel .element {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #ffffff;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  width: 100%;
+}
+
+.users {
+  min-width: 100px;
+}
+.watchers-count {
+  min-width: 150px;
+  text-align: right;
+}
+
+.img-loading {
+  width: 250px;
+}
