@@ -14,7 +14,7 @@ export class GameSocketService {
 
   constructor(private socketService: SocketService, private store$: Store<AppState>) { }
 
-  buildWaitingGameSocket(userId: string): Observable<SocketMessage> {
+  buildWaitingGameSocket(userId: string): Observable<SocketMessage | string> {
     return this.socketService.buildSocket({
         url: routes.wait + userId,
         closeObserver: {
@@ -31,7 +31,7 @@ export class GameSocketService {
     );
   }
 
-  buildCheckSessionSocket(sessionId: string): Observable<SocketMessage> {
+  buildCheckSessionSocket(sessionId: string): Observable<SocketMessage | string> {
     return this.socketService.buildSocket({
         url: routes.checkSession + sessionId,
         closeObserver: {

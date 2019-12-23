@@ -7,6 +7,6 @@ export interface SessionGameState {
   pacman?: Pacman[];
   ghosts?: Ghost[];
   cellMatrix?: CellType[][];
-  level?: number;
+  level?: number ;
   time?: number;
 }

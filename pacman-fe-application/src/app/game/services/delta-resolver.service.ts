@@ -8,6 +8,7 @@ import { SessionDelta } from "src/app/models/session-delta";
 export class DeltaResolverService {
 
   resolve(state: SessionDelta): Action[] {
+    console.log("I RESOLVE SOMETH");
     return [];
   }
 
