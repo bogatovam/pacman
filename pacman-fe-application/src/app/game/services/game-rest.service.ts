@@ -15,8 +15,8 @@ export class GameRestService {
     return this.http.get<string>(routes.newGame + userId );
   }
 
-  getAllActiveSessions(): Observable<Session> {
-    return this.http.get<Session>(routes.getAllSession);
+  getAllActiveSessions(): Observable<Session[]> {
+    return this.http.get<Session[]>(routes.getAllSession);
   }
 
   connectToSession(sessionId: string, userId: string): Observable<User> {

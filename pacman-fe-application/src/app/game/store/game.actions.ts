@@ -16,6 +16,7 @@ export enum GameActionsTypes {
 
 export class StartNewGame implements Action {
   readonly type = GameActionsTypes.START_NEW_GAME;
+  constructor() {}
 }
 
 export class SavePlayerId implements Action {
@@ -41,6 +42,7 @@ export class StartCheckingSession implements Action {
 
 export class StartNewGameSuccess implements Action {
   readonly type = GameActionsTypes.START_NEW_GAME_SUCCESS;
+  constructor() {}
 }
 
 export class WatchGame implements Action {
@@ -52,6 +54,7 @@ export class WatchGame implements Action {
 
 export class GameOver implements Action {
   readonly type = GameActionsTypes.GAME_OVER;
+  constructor() {}
 }
 
 export class SetActiveSessionId implements Action {

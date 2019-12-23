@@ -13,9 +13,12 @@ export class GameUtilService {
 
   // #TODO refactor:
   public activeSessions$: Observable<SimpleMap<User[]>> = this.gameRestService.getAllActiveSessions().pipe(
-    map((session: Session) => {
-        const id: string = session.id;
-        return {id: session.players};
+    map((sessions: Session[]) => {
+        const res: SimpleMap<User[]> = {};
+        sessions.forEach(session => {
+          res[session.id] = session.players;
+        });
+        return res;
       }
     ),
   );
