@@ -7,6 +7,7 @@ import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.util.UriComponentsBuilder;
 import pacman.player_manager.model.Session;
+import pacman.player_manager.model.SocketMessage;
 import pacman.player_manager.model.User;
 import pacman.player_manager.publisher.OpeningSessionPublisher;
 import reactor.core.publisher.Flux;
@@ -34,7 +35,7 @@ public class OpeningSessionHandler implements WebSocketHandler {
         Flux<WebSocketMessage> messages = sessionFlux
                 .filter(session -> userId != null && session.getPlayers().stream()
                         .map(User::getId).collect(Collectors.toList()).contains(userId))
-                .map(Session::getId)
+                .flatMap(session -> SocketMessage.builder().sessionId(session.getId()).build().toJSON())
                 .map(webSocketSession::textMessage);
         return webSocketSession.send(messages);
     }
