@@ -5,22 +5,29 @@
   >
     <button
       mat-flat-button
-      class="game-panel-menu button"
-      color="primary"
+      class="game-panel-menu start-button"
       (click)="startGame()"
     >
       Start game
     </button>
     <button
       mat-flat-button
-      class="game-panel-menu button"
-      color="primary"
-      (click)="waitForOtherPlayers()"
+      class="game-panel-menu watch-button"
+      (click)="showWatchGameMenu()"
     >
       Watch game
     </button>
   </div>
 
+  <mat-list
+    *ngIf="mode==Mode.WATCH">
+    <mat-list-item
+      *ngFor="let session of (activeSessions$ | async | keyvalue) as sessions"
+      (click)="waitForOtherPlayers(session.key)"
+    >
+      {{session.key}}
+    </mat-list-item>
+  </mat-list>
   <div
     *ngIf="isActiveSessionPresent"
     class="game-panel-active"

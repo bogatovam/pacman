@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from "@angular/material";
+import { MatButtonModule, MatListModule } from "@angular/material";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { GameRoutingModule } from "src/app/game/game-routing.module";
@@ -10,12 +10,14 @@ import * as fromGame from "src/app/game/store/game.reducers";
 import { HttpErrorInterceptor } from "src/app/services/error.interceptor";
 import { GamePanelComponent } from './components/game-panel/game-panel.component';
 import { GameComponent } from './components/game/game.component';
+
 @NgModule({
   declarations: [GameComponent, GamePanelComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     MatButtonModule,
+    MatListModule,
     GameRoutingModule,
     StoreModule.forFeature("game", fromGame.reducer),
     EffectsModule.forFeature([GameEffects]),

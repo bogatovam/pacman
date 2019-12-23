@@ -1,0 +1,18 @@
+.game-panel-menu {
+
+}
+
+.game-panel-menu .start-button {
+  background: #f1202d;
+  color: #21339f;
+  border-width: 1px;
+  border-color: #21339f;
+}
+
+
+.game-panel-menu .watch-button {
+  background: #f6fd02;
+  color: #21339f;
+  border-width: 1px;
+  border-color: #21339f;
+}

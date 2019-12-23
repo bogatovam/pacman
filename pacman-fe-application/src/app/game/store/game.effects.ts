@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { distinctUntilChanged, exhaustMap, map, pluck, switchMap, withLatestFrom } from "rxjs/operators";
+import { distinctUntilChanged, exhaustMap, map, mergeMap, pluck, switchMap, withLatestFrom } from "rxjs/operators";
 import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { DeltaResolverService } from "src/app/game/services/delta-resolver.service";
 import { GameRestService } from "src/app/game/services/game-rest.service";
@@ -15,7 +15,7 @@ import { SessionDelta } from "src/app/models/session-delta";
 export class GameEffects {
 
   @Effect()
-  startNewGame: Observable<Action[]> = this.actions$.pipe(
+  startNewGame: Observable<Action>  = this.actions$.pipe(
     ofType(GameActionsTypes.START_NEW_GAME),
     withLatestFrom(this.authStoreService.retrieveUserId()),
     switchMap(([, userId]: [string, string]) => {
@@ -23,7 +23,7 @@ export class GameEffects {
         map((playerId: string) => [playerId, userId])
       );
     }),
-    map(([playerId, userId]: [string, string]) => [
+    mergeMap(([playerId, userId]: [string, string]) => [
       new SetMode(Mode.PLAY),
       new SavePlayerId(playerId),
       new WaitForOtherPlayers(userId),
@@ -31,27 +31,27 @@ export class GameEffects {
   );
 
   @Effect()
-  waitForOtherPlayers: Observable<Action[]> = this.actions$.pipe(
+  waitForOtherPlayers: Observable<Action> = this.actions$.pipe(
     ofType(GameActionsTypes.WAIT_FOR_OTHER_PLAYERS),
     pluck("payload"),
     exhaustMap((userId: string) => this.gameSocketService.buildWaitingGameSocket(userId)),
     distinctUntilChanged(),
-    map((sessionId: string) => [
+    mergeMap((sessionId: string) => [
       new SetActiveSessionId(sessionId),
       new StartCheckingSession(sessionId),
     ])
   );
 
   @Effect()
-  startCheckingSession: Observable<Action[]> = this.actions$.pipe(
+  startCheckingSession: Observable<Action> = this.actions$.pipe(
     ofType(GameActionsTypes.START_CHECKING_SESSION),
     pluck("payload"),
     exhaustMap((sessionId: string) => this.gameSocketService.buildCheckSessionSocket(sessionId)),
-    map((delta: SessionDelta) => this.sessionDeltaResolver.resolve(delta))
+    mergeMap((delta: SessionDelta) => this.sessionDeltaResolver.resolve(delta))
   );
 
   @Effect()
-  watchGame: Observable<Action[]> = this.actions$.pipe(
+  watchGame: Observable<Action> = this.actions$.pipe(
     ofType(GameActionsTypes.WATCH_GAME),
     pluck("payload"),
     withLatestFrom(this.authStoreService.retrieveUserId()),
@@ -60,7 +60,7 @@ export class GameEffects {
         map(() => sessionId)
       )
     ),
-    map((sessionId: string) => [
+    mergeMap((sessionId: string) => [
       new SetMode(Mode.WATCH),
       new SetActiveSessionId(sessionId),
       new StartCheckingSession(sessionId),

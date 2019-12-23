@@ -2,18 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f25d745c-3ac0-4eaa-bf3a-3e40370891f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/simple-map.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PlayerManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PlayerManager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/components/game-panel/game-panel.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/game.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/game.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/delta-resolver.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/delta-resolver.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-rest.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-rest.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-util.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/services/game-util.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.effects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/game/store/game.reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/cell-type" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/cell-type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/game-object" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/game-object.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session-game-state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/app/models/session-game-state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pacman-fe-application/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../pacman-fe-application/src/styles.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -105,8 +111,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,17 +261,18 @@
       <workItem from="1575919363580" duration="5490000" />
       <workItem from="1575998533901" duration="7907000" />
       <workItem from="1576092986591" duration="2377000" />
+      <workItem from="1576584393296" duration="660000" />
+      <workItem from="1577045188211" duration="3055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19926000" />
+    <option name="totallyTimeSpent" value="23641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24810892" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25945538" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -274,7 +281,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.47954175" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.8314239" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.56305504" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
