@@ -1,18 +1,46 @@
 .game-panel-menu {
+  margin-top: 30vh;
 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-panel-menu .start-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 30%;
+  height: 50px;
+  margin:5px;
   background: #f1202d;
   color: #21339f;
-  border-width: 1px;
-  border-color: #21339f;
+  border-radius: 15px;
+  border: 15px white;
+
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
 .game-panel-menu .watch-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: 50px;
+
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  margin:5px;
+
   background: #f6fd02;
   color: #21339f;
-  border-width: 1px;
-  border-color: #21339f;
+
+  border-radius: 15px;
+  border: 15px white;
 }
