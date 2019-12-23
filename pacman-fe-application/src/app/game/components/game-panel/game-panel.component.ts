@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "src/app/app.state";
 import { User } from "src/app/auth/models/user";
+import { GameStoreService } from "src/app/game/services/game-store.service";
 import { GameUtilService } from "src/app/game/services/game-util.service";
 import { StartNewGame, WatchGame } from "src/app/game/store/game.actions";
 import { Mode } from "src/app/game/store/game.state";
@@ -15,24 +16,29 @@ import { SimpleMap } from "src/app/models/simple-map";
 })
 export class GamePanelComponent implements OnInit {
   Mode = Mode;
-  isActiveSessionPresent: boolean = false;
-  isLoading: boolean = false;
   mode: Mode = Mode.NONE;
-  activeSessions$: Observable<SimpleMap<User[]>> = null;
+
+  loading$: Observable<boolean> = null;
+  isActiveSessionPresent$: Observable<boolean> = null;
+  activeSessions$: Observable<SimpleMap<{ players: User[], countWatchers: number }>> = null;
 
   constructor(private store$: Store<AppState>,
               private  gameUtilService: GameUtilService,
-  ) { }
+              private  gameStoreService: GameStoreService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.activeSessions$ = this.gameUtilService.activeSessions$;
+    this.isActiveSessionPresent$ = this.gameStoreService.isActiveSessionPresent();
+    this.loading$ = this.gameStoreService.isLoading();
   }
 
-    startGame(): void {
+  startGame(): void {
     this.store$.dispatch(new StartNewGame());
   }
 
-    waitForOtherPlayers(sessionId: string): void {
+  waitForOtherPlayers(sessionId: string): void {
     this.store$.dispatch(new WatchGame(sessionId));
   }
 

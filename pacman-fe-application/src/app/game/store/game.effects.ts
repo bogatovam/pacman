@@ -36,6 +36,7 @@ export class GameEffects {
     pluck("payload"),
     exhaustMap((userId: string) => this.gameSocketService.buildWaitingGameSocket(userId)),
     distinctUntilChanged(),
+    pluck("sessionId"),
     mergeMap((sessionId: string) => [
       new SetActiveSessionId(sessionId),
       new StartCheckingSession(sessionId),

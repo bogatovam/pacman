@@ -10,7 +10,7 @@ import { routes } from "src/app/routes";
   providedIn: 'root'
 })
 export class SocketService {
-  public buildSocket(config: WebSocketSubjectConfig<SocketMessage | string>): Observable<SocketMessage | string> {
+  public buildSocket(config: WebSocketSubjectConfig<SocketMessage>): Observable<SocketMessage> {
     return new WebSocketSubject(config).asObservable();
   }
 

@@ -1,6 +1,6 @@
-<div *ngIf="!isLoading">
+<div *ngIf="!(loading$ | async)">
   <div
-    *ngIf="!isActiveSessionPresent"
+    *ngIf="!(isActiveSessionPresent$ | async)"
     class="game-panel-menu"
   >
     <button
@@ -17,22 +17,37 @@
     >
       Watch game
     </button>
+
+    <div class="session-panel"
+         *ngIf="mode == Mode.WATCH"
+    >
+      <div>
+        <div
+          *ngFor="let session of (activeSessions$ | async | keyvalue) as sessions; let i = index"
+          (click)="waitForOtherPlayers(session.key)"
+          class="element"
+        >
+          <div class="users">#{{i + 1}} </div>
+          <div class="users">{{session.value.players[0].name}} </div>
+          <div class="users">{{session.value.players[1].name}} </div>
+          <div class="users">{{session.value.players[2].name}} </div>
+          <div class="users">{{session.value.players[3].name}} </div>
+
+          <div class="watchers-count">{{session.value.countWatchers}} </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <mat-list
-    *ngIf="mode==Mode.WATCH">
-    <mat-list-item
-      *ngFor="let session of (activeSessions$ | async | keyvalue) as sessions"
-      (click)="waitForOtherPlayers(session.key)"
-    >
-      {{session.key}}
-    </mat-list-item>
-  </mat-list>
   <div
-    *ngIf="isActiveSessionPresent"
+    *ngIf="(isActiveSessionPresent$| async)"
     class="game-panel-active"
   >
     <game></game>
   </div>
 </div>
-<div *ngIf="isLoading"> LOADING, PLEASE WAIT</div>
+<div *ngIf="loading$ | async">
+  <div>LOADING, PLEASE WAIT</div>
+  <img class="img-loading" src="/assets/pacman.gif">
+</div>
