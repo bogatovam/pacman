@@ -11,6 +11,8 @@ import pacman.session_manager.publisher.ChangingSessionPublisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @Controller
 public class ChangingSessionHandler implements WebSocketHandler {
 
@@ -23,12 +25,13 @@ public class ChangingSessionHandler implements WebSocketHandler {
 
     @Override
     public Mono<Void> handle(WebSocketSession webSocketSession) {
-        String sessionId = UriComponentsBuilder.fromUri(webSocketSession.getHandshakeInfo().getUri())
+        List<String> sessionHeader = UriComponentsBuilder.fromUri(webSocketSession.getHandshakeInfo().getUri())
                 .build()
                 .getQueryParams()
-                .get("sessionId")
-                .get(0);
-        Flux<WebSocketMessage> messages =changingSessions.filter(sessionStatus -> sessionStatus.getSession().getId().equals(sessionId))
+                .get("sessionId");
+        String sessionId = (sessionHeader != null) ? sessionHeader.get(0) : null;
+        Flux<WebSocketMessage> messages =changingSessions
+                .filter(sessionStatus -> sessionStatus.getSession().getId().equals(sessionId))
                 .flatMap(sessionStatus -> sessionStatus.toJSON())
                 .onErrorResume(e -> Mono.just(e.getMessage()))
                 .map(s -> webSocketSession.textMessage(s));
