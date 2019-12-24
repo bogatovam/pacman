@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Mode } from "src/app/game/store/game.state";
+import { Point } from "src/app/models/point";
 import { Session } from "src/app/models/session";
 
 export enum GameActionsTypes {
@@ -12,6 +13,7 @@ export enum GameActionsTypes {
   GAME_OVER = '[Game] Game over ',
   SET_ACTIVE_SESSION_ID = '[Game] Set active session ',
   SET_MODE = '[Game] Set mode ',
+  DO_PLAYER_ACTION = '[Game] DoPlayerAction ',
 }
 
 export class StartNewGame implements Action {
@@ -71,6 +73,13 @@ export class SetMode implements Action {
   }
 }
 
+export class DoPlayerAction implements Action {
+  readonly type = GameActionsTypes.DO_PLAYER_ACTION;
+
+  constructor(public payload: Point) {
+  }
+}
+
 export type GameActions =
   SetMode |
   GameOver |
@@ -80,5 +89,6 @@ export type GameActions =
   WatchGame |
   WaitForOtherPlayers |
   StartNewGame |
+  DoPlayerAction |
   StartNewGameSuccess
   ;

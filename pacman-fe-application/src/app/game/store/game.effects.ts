@@ -7,8 +7,10 @@ import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { DeltaResolverService } from "src/app/game/services/delta-resolver.service";
 import { GameRestService } from "src/app/game/services/game-rest.service";
 import { GameSocketService } from "src/app/game/services/game-socket.service";
+import { GameStoreService } from "src/app/game/services/game-store.service";
 import { GameActionsTypes, SavePlayerId, SetActiveSessionId, SetMode, StartCheckingSession, WaitForOtherPlayers } from "src/app/game/store/game.actions";
 import { Mode } from "src/app/game/store/game.state";
+import { Point } from "src/app/models/point";
 import { SessionDelta } from "src/app/models/session-delta";
 
 @Injectable()
@@ -68,9 +70,20 @@ export class GameEffects {
     ])
   );
 
+  @Effect({dispatch: false})
+  doPlayerAction: Observable<any> = this.actions$.pipe(
+    ofType(GameActionsTypes.DO_PLAYER_ACTION),
+    pluck("payload"),
+    withLatestFrom(this.authStoreService.retrieveUserId(), this.gameStoreService.getGameId()),
+    mergeMap(([vector, userId, gameId]: [Point, string, string]) =>
+      this.gameRestService.doPlayerAction(userId, gameId, vector)
+    ),
+  );
+
   constructor(private actions$: Actions,
               private  gameRestService: GameRestService,
               private  gameSocketService: GameSocketService,
+              private  gameStoreService: GameStoreService,
               private  authStoreService: AuthStoreService,
               private  sessionDeltaResolver: DeltaResolverService,
   ) { }

@@ -1,22 +1,32 @@
-import { Observable } from "rxjs";
-import { Session } from "src/app/models/session";
-import { SocketMessage } from "src/app/models/socket-messages";
+import { CellType } from "src/app/models/cell-type";
+import { Ghost } from "src/app/models/ghost";
+import { Pacman } from "src/app/models/pacman";
 
 export enum Mode { WATCH, PLAY, NONE}
 
 export interface GameState {
-  activeSession: Session;
   mode: Mode;
+  gameId: string;
   playerId: string;
-  activeCheckSessionSocket: Observable<SocketMessage>;
+  activeSessionId: string;
+  time: number;
+  level: number ;
+  pacmans: Pacman[];
+  ghosts: Ghost[];
+  cellMatrix: CellType[][];
   loading: boolean;
 }
 
 export const initialGameState: GameState = {
-  activeSession: null,
   mode: Mode.NONE,
+  gameId: null,
   playerId: null,
-  activeCheckSessionSocket: null,
+  activeSessionId: null,
+  time: 0,
+  level: 0,
+  pacmans: null,
+  ghosts: null,
+  cellMatrix: null,
   loading: false,
 };
 

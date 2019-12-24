@@ -27,7 +27,7 @@ export function reducer(state: GameState = initialGameState, action: GameActions
     case GameActionsTypes.SET_ACTIVE_SESSION_ID: {
       return {
         ...state,
-        activeSession: {id: action.payload},
+        activeSessionId: action.payload,
       };
     }
 
