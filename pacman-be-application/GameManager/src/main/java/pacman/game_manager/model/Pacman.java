@@ -1,11 +1,10 @@
 package pacman.game_manager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
+@ToString(exclude="gameState")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pacman extends GameObject {
