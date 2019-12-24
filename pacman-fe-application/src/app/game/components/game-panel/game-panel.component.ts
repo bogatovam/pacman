@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "src/app/app.state";
 import { User } from "src/app/auth/models/user";
+import { BLOCK_SIZE, ZOOM } from "src/app/game/services/consts";
 import { GameStoreService } from "src/app/game/services/game-store.service";
 import { GameUtilService } from "src/app/game/services/game-util.service";
 import { StartNewGame, WatchGame } from "src/app/game/store/game.actions";

@@ -8,7 +8,7 @@ import { DeltaResolverService } from "src/app/game/services/delta-resolver.servi
 import { GameRestService } from "src/app/game/services/game-rest.service";
 import { GameSocketService } from "src/app/game/services/game-socket.service";
 import { GameStoreService } from "src/app/game/services/game-store.service";
-import { GameActionsTypes, SavePlayerId, SetActiveSessionId, SetMode, StartCheckingSession, WaitForOtherPlayers } from "src/app/game/store/game.actions";
+import { GameActionsTypes, SavePlayerId, SetActiveSessionId, SetMode, StartCheckingSession, UpdateState, WaitForOtherPlayers } from "src/app/game/store/game.actions";
 import { Mode } from "src/app/game/store/game.state";
 import { Point } from "src/app/models/point";
 import { SessionDelta } from "src/app/models/session-delta";
@@ -50,7 +50,7 @@ export class GameEffects {
     ofType(GameActionsTypes.START_CHECKING_SESSION),
     pluck("payload"),
     exhaustMap((sessionId: string) => this.gameSocketService.buildCheckSessionSocket(sessionId)),
-    mergeMap((delta: SessionDelta) => this.sessionDeltaResolver.resolve(delta))
+    mergeMap((delta: SessionDelta) => [new UpdateState(delta.session)])
   );
 
   @Effect()
@@ -85,6 +85,5 @@ export class GameEffects {
               private  gameSocketService: GameSocketService,
               private  gameStoreService: GameStoreService,
               private  authStoreService: AuthStoreService,
-              private  sessionDeltaResolver: DeltaResolverService,
   ) { }
 }

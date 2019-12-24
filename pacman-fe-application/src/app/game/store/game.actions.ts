@@ -14,6 +14,7 @@ export enum GameActionsTypes {
   SET_ACTIVE_SESSION_ID = '[Game] Set active session ',
   SET_MODE = '[Game] Set mode ',
   DO_PLAYER_ACTION = '[Game] DoPlayerAction ',
+  UPDATE_STATE = '[Game] UpdateState ',
 }
 
 export class StartNewGame implements Action {
@@ -80,7 +81,15 @@ export class DoPlayerAction implements Action {
   }
 }
 
+export class UpdateState implements Action {
+  readonly type = GameActionsTypes.UPDATE_STATE;
+
+  constructor(public payload: Session) {
+  }
+}
+
 export type GameActions =
+  UpdateState |
   SetMode |
   GameOver |
   StartCheckingSession |

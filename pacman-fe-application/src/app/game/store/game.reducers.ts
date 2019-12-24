@@ -38,6 +38,20 @@ export function reducer(state: GameState = initialGameState, action: GameActions
       };
     }
 
+    case GameActionsTypes.UPDATE_STATE: {
+      return {
+        ...state,
+        gameId: action.payload.gameState.id,
+        time: action.payload.gameState.time,
+        level: action.payload.gameState.level,
+        pacmans: action.payload.gameState.pacman,
+        ghosts: action.payload.gameState.ghosts,
+        cellMatrix: { ...action.payload.gameState.cellMatrix},
+        players: action.payload.players,
+        watchers: action.payload.watchers,
+      };
+    }
+
     default:
       return state;
   }
