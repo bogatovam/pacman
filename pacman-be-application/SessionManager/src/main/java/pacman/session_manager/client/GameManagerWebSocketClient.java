@@ -1,5 +1,6 @@
 package pacman.session_manager.client;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,12 +38,14 @@ public class GameManagerWebSocketClient {
     public void gameManagerWebSocketHandle(ContextRefreshedEvent event) {
         LOG.info("Create connection to GameManager");
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         WebSocketClient client = new ReactorNettyWebSocketClient();
         client.execute(URI.create(gameManagerUrl + "/change"), session -> session.receive()
                 .map(WebSocketMessage::getPayloadAsText)
                 .handle((String message, SynchronousSink<GameStatus> sink) -> {
                     try {
-                        sink.next(objectMapper.readValue(message, GameStatus.class));
+                        GameStatus gameStatus = objectMapper.readValue(message, GameStatus.class);
+                        sink.next(gameStatus);
                     } catch (IOException e) {
                         LOG.warn("Can't parse message from GameManager: " + message);
                     }
