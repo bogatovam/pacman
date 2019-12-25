@@ -27,7 +27,7 @@ public class PlayerQueueService {
         return Mono.just(id)
                 .doOnNext(userId -> LOG.info("Regist player: userId=" + userId))
                 // TODO: вытаскивать польователей из базы
-                .map(userId -> new User(userId, userId))
+                .map(userId -> new User(userId, "Player" + playerQueue.size()))
                 .flatMap(user -> !playerQueue.contains(user) ?
                         Mono.just(user)
                             .doOnNext(player -> playerQueue.add(player))

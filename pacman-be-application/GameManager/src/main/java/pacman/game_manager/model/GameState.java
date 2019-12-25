@@ -182,7 +182,7 @@ public class GameState {
         return false;
     }
 
-    public void update() {
+    private void update() {
         time = new Date().getTime() - startTime.getTime();
         //All Packman go
         for (Pacman p: pacman)
@@ -211,8 +211,11 @@ public class GameState {
         }
     }
 
-    public void update(PlayerAction playerAction) {
-
+    synchronized public void update(PlayerAction playerAction) {
+        if (playerAction == null) {
+            update();
+            return;
+        }
         Pacman pacman = this.pacman.stream()
                 .filter(player -> player.getUser().getId().equals(playerAction.getPlayerId()))
                 .findFirst().orElse(null);
