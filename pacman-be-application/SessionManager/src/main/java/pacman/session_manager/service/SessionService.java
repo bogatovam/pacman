@@ -64,7 +64,7 @@ public class SessionService {
 
     public Mono<User> addWatcher(String sessionId, String userId) {
         LOG.info("Add watcher: sessionId=" + sessionId + ", userId=" + userId);
-        return getSessionById(sessionId).flatMap(session -> Mono.just(new User(userId, userId))
+        return getSessionById(sessionId).flatMap(session -> Mono.just(new User(userId, "Watcher"))
                         .flatMap(user -> !session.getWatchers().contains(user) && !session.getPlayers().contains(user) ?
                                 Mono.just(user)
                                         .doOnNext(watcher -> session.getWatchers().add(watcher))
