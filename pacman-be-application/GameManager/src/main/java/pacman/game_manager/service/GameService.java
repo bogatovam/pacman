@@ -35,7 +35,7 @@ public class GameService {
         LOG.info("Create gameState: players=" + players);
         try {
             return Mono.just(new GameState(players))
-                    .map(gameState -> new GameThread(gameState, gamePublisher))
+                    .map(gameState -> new GameThread("Game=" + gameState.getId(), gameState, gamePublisher))
                     .doOnNext(Thread::start)
                     .doOnNext(gameThread -> games.put(gameThread.getGameState().getId(), gameThread))
                     .map(GameThread::getGameState)

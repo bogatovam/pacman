@@ -4,18 +4,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import pacman.game_manager.publisher.GamePublisher;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class GameThread extends Thread {
+    private static final Logger LOG = LoggerFactory.getLogger(GameThread.class);
     private GameState gameState;
     private GamePublisher gamePublisher;
 
     @JsonIgnore
     private static int STEP_TIME = 150;
+
+    public GameThread(String name, GameState gameState, GamePublisher gamePublisher) {
+        super(name);
+        this.gameState=gameState;
+        this.gamePublisher=gamePublisher;
+    }
 
     @Override
     public void run() {
@@ -27,7 +35,7 @@ public class GameThread extends Thread {
                 gameState.update();
                 //Out to console
                 if(step % 10 == 0 ) {
-                    System.out.println("Update 1 cell");
+                    LOG.debug("Update 1 cell");
                     step = 1;
                 } else {
                     ++step;
