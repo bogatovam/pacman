@@ -26,7 +26,6 @@ public class GameService {
         return games.containsKey(id) ?
                 Mono.just(games.get(id))
                     .map(GameThread::getGameState)
-                    .doOnNext(GameState::update)
                     .doOnNext(gameState -> LOG.info("Find gameState: " +gameState)) :
                 Mono.error(new Exception("Not such session: id=" + id));
     }
@@ -53,7 +52,6 @@ public class GameService {
                         .doOnNext(Thread::stop)
                         .map(GameThread::getGameState)
                         .doOnNext(gameState -> games.remove(gameState.getId()))
-                        .doOnNext(GameState::update)
                         .doOnNext(gameState -> gamePublisher.push(new GameStatus(gameState, GameStatus.Status.REMOVED)))
                         .doOnNext(gameState -> LOG.info("GameState was closed: " +gameState)) :
                 Mono.error(new Exception("Not such session: id=" + id));

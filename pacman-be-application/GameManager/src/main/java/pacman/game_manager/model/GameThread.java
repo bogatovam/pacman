@@ -32,7 +32,7 @@ public class GameThread extends Thread {
         while(!isInterrupted()) {
             try {
                 //Update gameState
-                gameState.update();
+                gameState.update(null);
                 //Out to console
                 if(step % 10 == 0 ) {
                     LOG.debug("Update 1 cell");
