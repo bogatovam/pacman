@@ -185,13 +185,11 @@ public class GameState {
     public void update() {
         time = new Date().getTime() - startTime.getTime();
         //All Packman go
-        for (int i = 0; i < pacman.size(); i++) {
-            pacman.get(i).go();
-        }
+        for (Pacman p: pacman)
+            p.go();
         //All Ghost go
-        for(Ghost g: ghosts) {
+        for(Ghost g: ghosts)
             g.go();
-        }
     }
 
     public boolean canPacmanGoTo(Pacman p, int x, int y) {

@@ -44,6 +44,23 @@ public class Pacman extends GameObject {
 
     public void go() {
         if(isDeath) return;
+        if(invisibleGo == 0) {
+            if(isInvisible && !isDeath) isInvisible = false;
+        } else invisibleGo--;
+        if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y)) && !isInvisible) {
+            lifeCount = lifeCount - 1;
+            System.out.println("I'm Pacman: " + color + " and I'm see Ghost. Life count = " + lifeCount);
+            if(lifeCount > 0) {
+                setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
+                isInvisible = true;
+                invisibleGo = 50;
+            } else {
+                System.out.println("I'm Pacman " + color + " and I'm Death.");
+                setCoords(new Point(-10.0, -10.0));
+                isInvisible = true;
+                isDeath = true;
+            }
+        }
         if(getCoords().isCenter()) {
             int x = Point.DoubleToNearInt(getCoords().x);
             int y = Point.DoubleToNearInt(getCoords().y);
@@ -79,22 +96,6 @@ public class Pacman extends GameObject {
         double deltaY = getSpeed().y * STEP;
         getCoords().x += deltaX;
         getCoords().y += deltaY;
-        if(invisibleGo == 0) {
-            if(isInvisible && !isDeath) isInvisible = false;
-        } else invisibleGo--;
-        if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y))) {
-            lifeCount = lifeCount - 1;
-            if(lifeCount > 0) {
-                setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
-                isInvisible = true;
-                invisibleGo = 20;
-            } else {
-                setCoords(new Point(-10.0, -10.0));
-                isInvisible = true;
-                isDeath = true;
-            }
-        }
-
     }
 
     public void updateSpeed(Point newSpeed) {
