@@ -54,7 +54,7 @@ export class GameComponent implements OnInit {
     if (this.moves[event.keyCode] && !this.press[event.keyCode]) {
       console.log((event));
       this.press[event.keyCode] = true;
-      //this.moves[event.keyCode]();
+      this.moves[event.keyCode]();
     }
   }
 
@@ -62,7 +62,7 @@ export class GameComponent implements OnInit {
   keyUpEvent(event: KeyboardEvent): void {
     if (this.moves[event.keyCode] && this.press[event.keyCode]) {
       this.press[event.keyCode] = false;
-      //   this.moves[KEY.NONE]();
+      this.moves[KEY.NONE]();
     }
   }
 

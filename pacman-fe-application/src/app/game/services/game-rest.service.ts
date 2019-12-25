@@ -25,7 +25,7 @@ export class GameRestService {
   }
 
   doPlayerAction(userId: string, gameId: string, vector: Point): Observable<any> {
-    return this.http.post<any>(routes.playerAction + gameId, {playerId: userId, speedVector: vector});
+    return this.http.post(routes.playerAction + gameId, {playerId: userId, speedVector: vector});
   }
 
   constructor(private http: HttpClient) {

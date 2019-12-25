@@ -36,12 +36,13 @@ export class DeltaResolverService {
     }
   }
 
-
   resolveGhosts(ctx: CanvasRenderingContext2D, prevGhosts: Ghost[], currGhosts: Ghost[]): void {
     if (!prevGhosts && currGhosts) {
       for (let i = 0; i < currGhosts.length; i++) {
         switch (currGhosts[i].color) {
           case Color.BLUE: {
+            console.log(currGhosts[i].color);
+
             this.drawService.initBlueGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
             break;
           }
@@ -54,6 +55,7 @@ export class DeltaResolverService {
             break;
           }
           case Color.YELLOW: {
+            console.log(this.getEntityCoordinates(currGhosts[i]));
             this.drawService.initYellowGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
             break;
           }
@@ -66,9 +68,9 @@ export class DeltaResolverService {
 
   private getEntityCoordinates(entity: GameObject): { x: number, y: number, offsetX: number, offsetY: number } {
     return {
-      x: Math.round(entity.coords.x), y: Math.round(entity.coords.y),
-      offsetX: entity.coords.x - Math.round(entity.coords.x),
-      offsetY: entity.coords.y - Math.round(entity.coords.y)
+      y: Math.round(entity.coords.x), x: Math.round(entity.coords.y),
+      offsetY: entity.coords.x - Math.round(entity.coords.x),
+      offsetX: entity.coords.y - Math.round(entity.coords.y)
     };
   }
 

@@ -15,5 +15,5 @@ export const routes = {
   getAllSession: protocolPrefix.http + port.session + "/session",
   connectToSession: protocolPrefix.http + port.session + "/session/",
   checkSession: protocolPrefix.ws + port.session + "/change?sessionId=",
-  playerAction: protocolPrefix.ws + port.game + "/game/",
+  playerAction: protocolPrefix.http + port.game + "/game/",
 };

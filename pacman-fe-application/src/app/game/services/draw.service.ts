@@ -57,53 +57,55 @@ export class DrawService {
              prevEntityCoordinates: { x: number; y: number; offsetX: number; offsetY: number },
              currPacman: Pacman,
              currEntityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
-
+    ctx.clearRect(prevEntityCoordinates.x * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
+      prevEntityCoordinates.y * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+    this.initPacman(ctx, currPacman, currEntityCoordinates);
   }
 
   initPacman(ctx: CanvasRenderingContext2D,
              currPacman: Pacman,
              entityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
-    const image = new Image(60, 60);
+    const image = new Image(20, 20);
     image.src = './assets/pacman.png';
 
     setTimeout(e => ctx.drawImage(image, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 60, 60), 1000);
+      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20), 1000);
   }
 
   initRedGhost(ctx: CanvasRenderingContext2D,
                currPacman: Ghost,
                entityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
-    const image = new Image(60, 60);
+    const image = new Image(20, 20);
     image.src = './assets/red.png';
     setTimeout(e => ctx.drawImage(image, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 60, 60), 1000);
+      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20), 1000);
   }
 
   initPinkGhost(ctx: CanvasRenderingContext2D,
                 currPacman: Ghost,
                 entityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
-    const image = new Image(60, 60);
+    const image = new Image(20, 20);
     image.src = './assets/pink.png';
     setTimeout(e => ctx.drawImage(image, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 60, 60), 1000);
+      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20), 1000);
   }
 
   initYellowGhost(ctx: CanvasRenderingContext2D,
                   currPacman: Ghost,
                   entityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
-    const image = new Image(60, 60);
+    const image = new Image(20, 20);
     image.src = './assets/orange.png';
     setTimeout(e => ctx.drawImage(image, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 60, 60), 1000);
+      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20), 1000);
   }
 
   initBlueGhost(ctx: CanvasRenderingContext2D,
                 currPacman: Ghost,
                 entityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
-    const image = new Image(60, 60);
+    const image = new Image(20, 20);
     image.src = './assets/blue.png';
     setTimeout(e => ctx.drawImage(image, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 60, 60), 1000);
+      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20), 1000);
   }
 
 }
