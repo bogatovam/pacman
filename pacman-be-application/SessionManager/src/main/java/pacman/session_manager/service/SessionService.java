@@ -86,7 +86,7 @@ public class SessionService {
     }
 
     public void updateGameState(GameStatus gameStatus) {
-        LOG.info("Update gameState: " + gameStatus);
+        LOG.debug("Update gameState: " + gameStatus);
         String sessionId = openedSessions.values().stream()
                 .filter(session -> session.getGameState().getId().equals(gameStatus.getGameState().getId()))
                 .findFirst().map(Session::getId).orElse(null);

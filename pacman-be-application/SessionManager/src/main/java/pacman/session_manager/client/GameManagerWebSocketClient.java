@@ -50,7 +50,7 @@ public class GameManagerWebSocketClient {
                         LOG.warn("Can't parse message from GameManager: " + message);
                     }
                 })
-                .doOnNext(gameStatus -> System.out.println("Get message from GameManager: " + gameStatus))
+                .doOnNext(gameStatus -> LOG.debug("Get message from GameManager: " + gameStatus))
                 .doOnNext(gameStatus -> sessionService.updateGameState(gameStatus))
                 .then()
                 .log())
