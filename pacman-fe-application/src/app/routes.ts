@@ -6,6 +6,7 @@ const protocolPrefix = {
 export const port = {
   player: "localhost:9090",
   session: "localhost:8081",
+  game: "localhost:8085",
 };
 
 export const routes = {
@@ -14,4 +15,5 @@ export const routes = {
   getAllSession: protocolPrefix.http + port.session + "/session",
   connectToSession: protocolPrefix.http + port.session + "/session/",
   checkSession: protocolPrefix.ws + port.session + "/change?sessionId=",
+  playerAction: protocolPrefix.http + port.game + "/game/",
 };

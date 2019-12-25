@@ -1,1 +1,1 @@
-export enum CellType {EMPTY, SCORE, WALL}
+export enum CellType {EMPTY = "EMPTY", SCORE = "SCORE", WALL = "WALL"}
