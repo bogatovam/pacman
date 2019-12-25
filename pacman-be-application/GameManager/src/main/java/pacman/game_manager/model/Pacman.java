@@ -43,6 +43,7 @@ public class Pacman extends GameObject {
     }
 
     public void go() {
+        if(isDeath) return;
         if(getCoords().isCenter()) {
             int x = Point.DoubleToNearInt(getCoords().x);
             int y = Point.DoubleToNearInt(getCoords().y);
@@ -82,7 +83,7 @@ public class Pacman extends GameObject {
             if(isInvisible && !isDeath) isInvisible = false;
         } else invisibleGo--;
         if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y))) {
-            lifeCount--;
+            lifeCount = lifeCount - 1;
             if(lifeCount > 0) {
                 setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
                 isInvisible = true;

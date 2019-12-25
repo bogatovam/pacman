@@ -74,7 +74,6 @@ public class GameState {
             }
         }
 
-
         /** Ghost's coords */
         Point RedGhostCoodrs = new Point(11.0, 9.0);
         Point RedGhostSpeed = new Point(0.0, 0.0);

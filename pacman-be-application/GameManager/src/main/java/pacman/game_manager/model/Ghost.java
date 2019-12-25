@@ -152,7 +152,10 @@ public class Ghost extends GameObject {
             Pacman curP = pacmanList.get(i);
             if(curP.isInvisible()) continue;
             double curD = getCoords().getDistance(curP.getCoords());
-            if(curD < distance) nearPacman = curP;
+            if(curD < distance) {
+                distance = curD;
+                nearPacman = curP;
+            }
         }
         return nearPacman;
     }
