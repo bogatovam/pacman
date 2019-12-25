@@ -231,16 +231,20 @@ public class GameState {
         int step = 0;
         while(true) {
             /** Out for Ghost */
-            if(step % 10 == 0) {
+            if(step == 1) {
                 System.out.println("RED Coords: " + state.getGhosts().get(0).getCoords().x.floatValue() + " " + state.getGhosts().get(0).getCoords().y.floatValue());
                 System.out.println("BLUE Coords: " + state.getGhosts().get(1).getCoords().x.floatValue() + " " + state.getGhosts().get(1).getCoords().y.floatValue());
                 System.out.println("PINK Coords: " + state.getGhosts().get(2).getCoords().x.floatValue() + " " + state.getGhosts().get(2).getCoords().y.floatValue());
                 System.out.println("YELLOW Coords: " + state.getGhosts().get(3).getCoords().x.floatValue() + " " + state.getGhosts().get(3).getCoords().y.floatValue());
+                System.out.println("1 PAC Coords: " + state.getPacman().get(0).getCoords().x.floatValue() + " " + state.getPacman().get(0).getCoords().y.floatValue());
+                System.out.println("2 PAC Coords: " + state.getPacman().get(1).getCoords().x.floatValue() + " " + state.getPacman().get(1).getCoords().y.floatValue());
+                System.out.println("3 PAC Coords: " + state.getPacman().get(2).getCoords().x.floatValue() + " " + state.getPacman().get(2).getCoords().y.floatValue());
+                System.out.println("4 PAC Coords: " + state.getPacman().get(3).getCoords().x.floatValue() + " " + state.getPacman().get(3).getCoords().y.floatValue());
                 System.out.println("---");
                 step = 0;
             }
             step++;
-            state.update();
+            state.update(null);
             try {
                 Thread.sleep(100);
             } catch (InterruptedException  e) {

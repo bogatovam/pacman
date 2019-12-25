@@ -34,12 +34,11 @@ public class GameThread extends Thread {
                 //Update gameState
                 gameState.update(null);
                 //Out to console
-                if(step % 10 == 0 ) {
+                if(step == 10 ) {
                     LOG.debug("Update 1 cell");
-                    step = 1;
-                } else {
-                    ++step;
+                    step = 0;
                 }
+                step++;
                 //Push to publisher
                 gamePublisher.push(new GameStatus(gameState, GameStatus.Status.CHANGED));
                 //Thread sleep
