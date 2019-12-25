@@ -33,6 +33,10 @@ public class GameThread extends Thread {
             try {
                 //Update gameState
                 gameState.update(null);
+                if(gameState.isAllPacmanDeath()) {
+                    gamePublisher.push(new GameStatus(gameState, GameStatus.Status.REMOVED));
+                    break;
+                }
                 //Out to console
                 if(step == 10 ) {
                     LOG.debug("Update 1 cell");

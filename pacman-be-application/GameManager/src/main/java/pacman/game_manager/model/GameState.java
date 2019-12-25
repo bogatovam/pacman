@@ -182,6 +182,13 @@ public class GameState {
         return false;
     }
 
+    public boolean isAllPacmanDeath() {
+        for (Pacman p:pacman) {
+            if(!p.isDeath()) return false;
+        }
+        return true;
+    }
+
     private void update() {
         time = new Date().getTime() - startTime.getTime();
         //All Packman go
@@ -231,7 +238,7 @@ public class GameState {
         int step = 0;
         while(true) {
             /** Out for Ghost */
-            if(step == 1) {
+            if(step == 10) {
                 System.out.println("RED Coords: " + state.getGhosts().get(0).getCoords().x.floatValue() + " " + state.getGhosts().get(0).getCoords().y.floatValue());
                 System.out.println("BLUE Coords: " + state.getGhosts().get(1).getCoords().x.floatValue() + " " + state.getGhosts().get(1).getCoords().y.floatValue());
                 System.out.println("PINK Coords: " + state.getGhosts().get(2).getCoords().x.floatValue() + " " + state.getGhosts().get(2).getCoords().y.floatValue());

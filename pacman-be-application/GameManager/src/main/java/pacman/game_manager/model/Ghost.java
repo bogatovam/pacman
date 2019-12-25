@@ -47,20 +47,28 @@ public class Ghost extends GameObject {
                 Pacman pacman = getNearPacman();
                 Point newCoord = null;
                 if(pacman == null) {
-                    newCoord = DefaultPoint;
+                    newCoord = new Point(DefaultPoint.x, DefaultPoint.y);
                 } else if(color.equals(Color.RED)) {
                     //RED Ghost
-                    newCoord = pacman.getCoords();
+                    newCoord = new Point(pacman.getCoords().x, pacman.getCoords().y);
                 } else if(color.equals(Color.YELLOW)) {
                     //YELLOW Ghost
                     if(getCoords().getDistance(pacman.getCoords()) > 8) {
                         newCoord = pacman.getCoords();
                     } else
-                        newCoord = DefaultPoint;
+                        newCoord = new Point(DefaultPoint.x, DefaultPoint.y);
                 } else if(color.equals(Color.BLUE)) {
                     //BLUE ghost
-                    newCoord = pacman.getCoords();
-                    Point pSpeed = pacman.getSpeed();
+                    Ghost ghost = gameState.getGhosts().get(0);
+                    for (Ghost g:gameState.getGhosts()) {
+                        if(g.getColor().equals(Color.RED)) {
+                            ghost = g;
+                            break;
+                        }
+                    }
+                    Pacman redPacman = ghost.getNearPacman();
+                    newCoord = new Point(redPacman.getCoords().x, redPacman.getCoords().y);
+                    Point pSpeed = redPacman.getSpeed();
                     if(pSpeed.x > 0) {
                         newCoord.x += 2.0;
                     } else if(pSpeed.x < 0) {
@@ -71,13 +79,13 @@ public class Ghost extends GameObject {
                     } else if(pSpeed.y < 0) {
                         newCoord.y -= 2.0;
                     }
-                    double deltaX = newCoord.x - getCoords().x;
-                    double deltaY = newCoord.y - getCoords().y;
+                    double deltaX = newCoord.x - ghost.getCoords().x;
+                    double deltaY = newCoord.y - ghost.getCoords().y;
                     newCoord.x += deltaX;
                     newCoord.y += deltaY;
                 } else if(color.equals(Color.PINK)) {
                     //PINK Ghost
-                    newCoord = pacman.getCoords();
+                    newCoord = new Point(pacman.getCoords().x, pacman.getCoords().y);
                     Point pSpeed = pacman.getSpeed();
                     if(pSpeed.x > 0) {
                         newCoord.x += 4.0;
