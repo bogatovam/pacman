@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "src/app/app.state";
-import { isActiveSessionPresent, isLoading, retrieveCellMatrix, retrieveGameId, retrieveGhosts, retrievePacmans } from "src/app/game/store/game.selectors";
+import { User } from "src/app/auth/models/user";
+import { isActiveSessionPresent, isLoading, retrieveCellMatrix, retrieveGameId, retrieveGameStatus, retrieveGhosts, retrieveLevel, retrievePacmans, retrievePlayers, retrieveWatchers } from "src/app/game/store/game.selectors";
 import { CellType } from "src/app/models/cell-type";
 import { Ghost } from "src/app/models/ghost";
 import { Pacman } from "src/app/models/pacman";
+import { SessionDeltaAction } from "src/app/models/session-delta";
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +40,20 @@ export class GameStoreService {
 
   getGameId(): Observable<string> {
     return this.store$.select(retrieveGameId);
+  }
+  getGameStatus(): Observable<SessionDeltaAction> {
+    return this.store$.select(retrieveGameStatus);
+  }
+
+  getLevel(): Observable<number> {
+    return this.store$.select(retrieveLevel);
+  }
+
+  getPlayers(): Observable<User[]> {
+    return this.store$.select(retrievePlayers);
+  }
+
+  getWatchers(): Observable<User[]> {
+    return this.store$.select(retrieveWatchers);
   }
 }

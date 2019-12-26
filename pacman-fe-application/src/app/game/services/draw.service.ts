@@ -97,13 +97,13 @@ export class DrawService {
     ctx.clearRect(prevEntityCoordinates.x * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
       prevEntityCoordinates.y * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
     if (board) {
-      this.drawLabyrinthField(ctx,
+      this.fillLabyrinthField(ctx,
         prevEntityCoordinates.x,
         prevEntityCoordinates.y, board[prevEntityCoordinates.y][prevEntityCoordinates.x]);
-      this.drawLabyrinthField(ctx,
+      this.fillLabyrinthField(ctx,
         prevEntityCoordinates.x + 1,
         prevEntityCoordinates.y, board[prevEntityCoordinates.y][prevEntityCoordinates.x + 1]);
-      this.drawLabyrinthField(ctx,
+      this.fillLabyrinthField(ctx,
         prevEntityCoordinates.x,
         prevEntityCoordinates.y + 1, board[prevEntityCoordinates.y + 1][prevEntityCoordinates.x]);
     }

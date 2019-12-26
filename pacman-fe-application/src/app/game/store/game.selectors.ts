@@ -8,4 +8,8 @@ export const isActiveSessionPresent = createSelector(selectGameState, (state: Ga
 export const retrieveCellMatrix = createSelector(selectGameState, (state: GameState) => state.cellMatrix);
 export const retrievePacmans = createSelector(selectGameState, (state: GameState) => state.pacmans);
 export const retrieveGhosts = createSelector(selectGameState, (state: GameState) => state.ghosts);
+export const retrieveGameStatus = createSelector(selectGameState, (state: GameState) => state.gameStatus);
+export const retrieveLevel = createSelector(selectGameState, (state: GameState) => state.level);
+export const retrievePlayers = createSelector(selectGameState, (state: GameState) => state.players);
+export const retrieveWatchers = createSelector(selectGameState, (state: GameState) => state.watchers);
 export const retrieveGameId = createSelector(selectGameState, (state: GameState) => state.gameId);
