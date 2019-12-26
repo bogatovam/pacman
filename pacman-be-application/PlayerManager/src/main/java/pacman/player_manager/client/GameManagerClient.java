@@ -4,6 +4,7 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 import org.reactivestreams.Publisher;
+import pacman.player_manager.model.ActionResult;
 import pacman.player_manager.model.PlayerAction;
 import pacman.player_manager.model.Session;
 import pacman.player_manager.model.User;
@@ -15,5 +16,5 @@ import java.util.List;
 @Headers({"Accept: application/json"})
 public interface GameManagerClient {
     @RequestLine("POST /game/{id}")
-    Mono<String> openSession(@Param("id") String gameId, Publisher<PlayerAction> playerAction);
+    Mono<ActionResult> openSession(@Param("id") String gameId, Publisher<PlayerAction> playerAction);
 }

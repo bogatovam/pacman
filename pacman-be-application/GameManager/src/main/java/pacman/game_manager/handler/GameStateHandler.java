@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import pacman.game_manager.model.ActionResult;
 import pacman.game_manager.model.PlayerAction;
 import pacman.game_manager.model.User;
 import pacman.game_manager.service.GameService;
@@ -57,7 +58,7 @@ public class GameStateHandler {
                 .doOnNext(playerAction -> gameService.playerEvent(request.pathVariable("id"), playerAction))
                 .flatMap(playerAction -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .syncBody("OK"))
+                        .syncBody(new ActionResult("OK")))
                 .onErrorResume(e -> ServerResponse.badRequest().syncBody(e.getMessage()));
     }
 
