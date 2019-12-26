@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pacman.session_manager.client.GameManagerClient;
+import pacman.session_manager.client.GatewayClient;
 import pacman.session_manager.model.*;
 import pacman.session_manager.publisher.ChangingSessionPublisher;
 import reactor.core.publisher.Flux;
@@ -27,6 +28,9 @@ public class SessionService {
     @Autowired
     private GameManagerClient gameManagerClient;
 
+    @Autowired
+    private GatewayClient gatewayClient;
+
     public Flux<Session> getAllSessions() {
         LOG.info("Get all sessions");
         return Flux.fromIterable(openedSessions.values());
@@ -36,7 +40,7 @@ public class SessionService {
         LOG.info("Get session: id=" + id);
         return openedSessions.containsKey(id) ?
                 Mono.just(openedSessions.get(id))
-                    .doOnNext(session -> LOG.info("Find session: " + session)):
+                        .doOnNext(session -> LOG.info("Find session: " + session)):
                 Mono.error(new Exception("Not such session: id=" + id));
     }
 
@@ -64,25 +68,27 @@ public class SessionService {
 
     public Mono<User> addWatcher(String sessionId, String userId) {
         LOG.info("Add watcher: sessionId=" + sessionId + ", userId=" + userId);
-        return getSessionById(sessionId).flatMap(session -> Mono.just(new User(userId, "Watcher"))
-                        .flatMap(user -> !session.getWatchers().contains(user) && !session.getPlayers().contains(user) ?
-                                Mono.just(user)
-                                        .doOnNext(watcher -> session.getWatchers().add(watcher))
-                                        .doOnNext(watcher -> sessionChangingPublisher.push(new SessionStatus(session, SessionStatus.Action.CHANGE)))
-                                        .doOnNext(watcher -> LOG.info("Watcher was added: sessionId=" + sessionId + ", user=" + watcher)) :
-                                Mono.error(new Exception("User already exist in session: sessionId=" + sessionId + ", userId=" + userId))));
+        return getSessionById(sessionId).flatMap(session -> gatewayClient.getUser(userId)
+                .onErrorReturn(new User(userId, "Watcher"))
+                .flatMap(user -> !session.getWatchers().contains(user) && !session.getPlayers().contains(user) ?
+                        Mono.just(user)
+                                .doOnNext(watcher -> session.getWatchers().add(watcher))
+                                .doOnNext(watcher -> sessionChangingPublisher.push(new SessionStatus(session, SessionStatus.Action.CHANGE)))
+                                .doOnNext(watcher -> LOG.info("Watcher was added: sessionId=" + sessionId + ", user=" + watcher)) :
+                        Mono.error(new Exception("User already exist in session: sessionId=" + sessionId + ", userId=" + userId))));
     }
 
     public Mono<User> removeWatcher(String sessionId, String userId) {
         LOG.info("Remove watcher: sessionId=" + sessionId + ", userId=" + userId);
         return getSessionById(sessionId)
-                .flatMap(session -> Mono.just(new User(userId, userId))
-                    .flatMap(user -> session.getWatchers().contains(user) ?
-                            Mono.just(user)
-                                .doOnNext(deletedUser -> session.getWatchers().remove(deletedUser))
-                                .doOnNext(deletedUser -> sessionChangingPublisher.push(new SessionStatus(session, SessionStatus.Action.CHANGE)))
-                                .doOnNext(deletedUser -> LOG.info("Watcher was added: sessionId=" + sessionId + ", user=" + deletedUser)) :
-                            Mono.error(new Exception("User doesn't exist in session: sessionId=" + sessionId + ", userId=" + userId))));
+                .flatMap(session -> gatewayClient.getUser(userId)
+                        .onErrorReturn(new User(userId, "Watcher"))
+                        .flatMap(user -> session.getWatchers().contains(user) ?
+                                Mono.just(user)
+                                        .doOnNext(deletedUser -> session.getWatchers().remove(deletedUser))
+                                        .doOnNext(deletedUser -> sessionChangingPublisher.push(new SessionStatus(session, SessionStatus.Action.CHANGE)))
+                                        .doOnNext(deletedUser -> LOG.info("Watcher was added: sessionId=" + sessionId + ", user=" + deletedUser)) :
+                                Mono.error(new Exception("User doesn't exist in session: sessionId=" + sessionId + ", userId=" + userId))));
     }
 
     public void updateGameState(GameStatus gameStatus) {

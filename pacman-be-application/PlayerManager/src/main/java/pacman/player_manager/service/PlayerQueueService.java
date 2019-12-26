@@ -19,6 +19,8 @@ public class PlayerQueueService {
     @Autowired
     private PlayerSessionService sessionService;
 
+
+
     private static final Logger LOG = LoggerFactory.getLogger(PlayerQueueService.class);
 
     private List<User> playerQueue = new CopyOnWriteArrayList<>(); // List of players
@@ -30,9 +32,9 @@ public class PlayerQueueService {
                 .map(userId -> new User(userId, "Player" + playerQueue.size()))
                 .flatMap(user -> !playerQueue.contains(user) ?
                         Mono.just(user)
-                            .doOnNext(player -> playerQueue.add(player))
-                            .doOnNext(player -> LOG.info("Player was created: user=" + player))
-                            .doOnNext(player -> checkForFullSet()) :
+                                .doOnNext(player -> playerQueue.add(player))
+                                .doOnNext(player -> LOG.info("Player was created: user=" + player))
+                                .doOnNext(player -> checkForFullSet()) :
                         Mono.error(new Exception("Player with user=" + user + " already exist")));
     }
 

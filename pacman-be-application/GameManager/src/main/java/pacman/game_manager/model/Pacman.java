@@ -2,12 +2,17 @@ package pacman.game_manager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Data
 @ToString(exclude="gameState")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pacman extends GameObject {
+    @JsonIgnore
+    private static final Logger LOG = LoggerFactory.getLogger(Pacman.class);
+
     private Integer lifeCount = 3;
     private Integer score = 0;
     private Color color;
@@ -49,13 +54,13 @@ public class Pacman extends GameObject {
         } else --invisibleGo;
         if(gameState.isGhost(Point.DoubleToNearInt(getCoords().x), Point.DoubleToNearInt(getCoords().y)) && !isInvisible) {
             lifeCount = lifeCount - 1;
-            System.out.println("I'm Pacman: " + color + " and I'm see Ghost. Life count = " + lifeCount);
+            LOG.debug("I'm Pacman: " + color + " and I'm see Ghost. Life count = " + lifeCount);
             if(lifeCount > 0) {
                 setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
                 isInvisible = true;
                 invisibleGo = 70;
             } else {
-                System.out.println("I'm Pacman " + color + " and I'm Death.");
+                LOG.debug("I'm Pacman " + color + " and I'm Death.");
                 setCoords(new Point(-10.0, -10.0));
                 isInvisible = true;
                 isDeath = true;

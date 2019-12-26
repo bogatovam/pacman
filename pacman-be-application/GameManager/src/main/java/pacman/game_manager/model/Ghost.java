@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -13,6 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ghost extends GameObject {
+    @JsonIgnore
+    private static final Logger LOG = LoggerFactory.getLogger(Pacman.class);
+
     private Color color;
 
     @JsonIgnore
@@ -44,7 +49,8 @@ public class Ghost extends GameObject {
             int x = Point.DoubleToNearInt(getCoords().x);
             int y = Point.DoubleToNearInt(getCoords().y);
             if(gameState.isWall(x, y)) {
-                System.out.println("WTF GHOST? " + x + " " + y);
+                LOG.debug(
+                        "WTF GHOST? " + x + " " + y);
             }
             if(gameState.isCrossroads(x, y)) {
                 Pacman pacman = getNearPacman();

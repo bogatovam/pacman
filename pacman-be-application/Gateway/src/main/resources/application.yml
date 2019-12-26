@@ -1,15 +1,18 @@
 spring:
   application:
-    name: pacman_game_manager
+    name: pacman_gateway
+  data:
+    mongodb:
+      uri: mongodb://192.168.99.100:27017/pacman
+      service: mongo-db
 server:
-  port: 8085
+  port: 8080
 
 logging:
   level:
     pacman: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-
 pacman:
   player_manager:
     uri: localhost
