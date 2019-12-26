@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { filter, mergeMap, pairwise, switchMap, tap } from "rxjs/operators";
+import { filter, first, mergeMap, pairwise, switchMap, tap } from "rxjs/operators";
 import { AppState } from "src/app/app.state";
 import { User } from "src/app/auth/models/user";
 import { KEY } from "src/app/game/services/consts";
@@ -115,10 +115,14 @@ export class GameComponent implements OnInit {
       this.deltaResolver.resolveGhosts(this.ctx, prev, curr);
     });
 
-    this.gameStoreService.getMode().pipe(
-      switchMap(() => this.gameStoreService.getTime()),
+    this.gameStoreService.getTime().pipe(
+      filter((time) => !!time),
+      first(),
       tap((time) => {
-        console.log(time);
+        const initSec: number = Math.floor((time / 1000) % 60);
+        const initMin: number = Math.floor((time / 1000) / 60);
+        this.timer.secs = initSec;
+        this.timer.mins = initMin;
         setInterval(() => {
           if (this.timer.secs + 1 >= 60) {
             this.timer.secs = 0;
@@ -128,7 +132,7 @@ export class GameComponent implements OnInit {
           }
         }, 1000);
       }),
-    );
+    ).subscribe();
   }
 }
 
