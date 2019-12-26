@@ -53,7 +53,7 @@ public class Pacman extends GameObject {
             if(lifeCount > 0) {
                 setCoords(new Point(getDefaultCoords().x, getDefaultCoords().y));
                 isInvisible = true;
-                invisibleGo = 10;
+                invisibleGo = 70;
             } else {
                 System.out.println("I'm Pacman " + color + " and I'm Death.");
                 setCoords(new Point(-10.0, -10.0));

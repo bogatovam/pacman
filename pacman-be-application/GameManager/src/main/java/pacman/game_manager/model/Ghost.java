@@ -43,6 +43,9 @@ public class Ghost extends GameObject {
         if(getCoords().isCenter()) {
             int x = Point.DoubleToNearInt(getCoords().x);
             int y = Point.DoubleToNearInt(getCoords().y);
+            if(gameState.isWall(x, y)) {
+                System.out.println("WTF GHOST? " + x + " " + y);
+            }
             if(gameState.isCrossroads(x, y)) {
                 Pacman pacman = getNearPacman();
                 Point newCoord = null;
@@ -54,7 +57,7 @@ public class Ghost extends GameObject {
                 } else if(color.equals(Color.YELLOW)) {
                     //YELLOW Ghost
                     if(getCoords().getDistance(pacman.getCoords()) > 8) {
-                        newCoord = pacman.getCoords();
+                        newCoord = new Point(pacman.getCoords().x, pacman.getCoords().y);
                     } else
                         newCoord = new Point(DefaultPoint.x, DefaultPoint.y);
                 } else if(color.equals(Color.BLUE)) {
@@ -101,7 +104,7 @@ public class Ghost extends GameObject {
                 setNewSpeedInCrossroad(newCoord);
             } else {
                 //Check rotate ghost and set new speed
-                Point prevSpeed = getSpeed();
+                Point prevSpeed = new Point(getSpeed().x, getSpeed().y);
                 boolean left = !gameState.isWall(x, y-1);
                 boolean up = !gameState.isWall(x-1, y);
                 boolean right = !gameState.isWall(x, y+1);
@@ -151,7 +154,7 @@ public class Ghost extends GameObject {
         getCoords().y += deltaY;
     }
 
-    private Pacman getNearPacman() {
+    public Pacman getNearPacman() {
         List<Pacman> pacmanList = gameState.getPacman();
         if(pacmanList.size() < 1) return null;
         Pacman nearPacman = null;
@@ -170,7 +173,7 @@ public class Ghost extends GameObject {
 
     //ONLY CROSSROAD
     private void setNewSpeedInCrossroad(Point destination) {
-        Point prevSpeed = getSpeed();
+        Point prevSpeed = new Point(getSpeed().x, getSpeed().y);
         int x = Point.DoubleToNearInt(getCoords().x);
         int y = Point.DoubleToNearInt(getCoords().y);
         //Minimum 3 true
@@ -197,16 +200,16 @@ public class Ghost extends GameObject {
                 //go down
                 else if(fromDown <= fromLeft && fromDown <= fromRight) setSpeed(new Point(arg, 0.0));
                 //go right
-                else new Point(0.0, arg);
+                else setSpeed(new Point(0.0, arg));
             } else if(left && right) {
                 if(fromLeft <= fromRight) setSpeed(new Point(0.0, -arg));
-                else new Point(0.0, arg);
+                else setSpeed(new Point(0.0, arg));
             } else if(left && down) {
                 if(fromLeft <= fromDown) setSpeed(new Point(0.0, -arg));
-                else new Point(arg, 0.0);
+                else setSpeed(new Point(arg, 0.0));
             } else {
                 if(fromDown <= fromRight) setSpeed(new Point(arg, 0.0));
-                else new Point(0.0, arg);
+                else setSpeed(new Point(0.0, arg));
             }
         } else if(prevSpeed.x < 0) {
             //Ghost moved up can't go down
@@ -233,8 +236,8 @@ public class Ghost extends GameObject {
             double arg = Math.abs(prevSpeed.y);
             if(up && right && down) {
                 if(fromUp <= fromDown && fromUp <= fromRight) setSpeed(new Point(-arg, 0.0));
-                else if(fromRight <= fromUp && fromRight <= fromRight) setSpeed(new Point(arg, 0.0));
-                else setSpeed(new Point(0.0, arg));
+                else if(fromRight <= fromUp && fromRight <= fromRight) setSpeed(new Point(0.0, arg));
+                else setSpeed(new Point(arg, 0.0));
             } else if(up && right) {
                 if(fromUp <= fromRight) setSpeed(new Point(-arg, 0.0));
                 else setSpeed(new Point(0.0, arg));

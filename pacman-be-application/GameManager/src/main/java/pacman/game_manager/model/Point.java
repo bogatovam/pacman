@@ -12,7 +12,7 @@ public class Point {
     public Double y;
 
     public double getDistance(Point p) {
-        return Math.sqrt((p.x - x)*(p.x - x) + (p.y - y)*(p.y - y));
+        return (DoubleToNearInt(p.x) - DoubleToNearInt(x))*(DoubleToNearInt(p.x) - DoubleToNearInt(x)) + (DoubleToNearInt(p.y) - DoubleToNearInt(y))*(DoubleToNearInt(p.y) - DoubleToNearInt(y));
     }
 
     /** Return true if x and y is Int */
