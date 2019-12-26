@@ -2,6 +2,7 @@ import { Action } from "@ngrx/store";
 import { Mode } from "src/app/game/store/game.state";
 import { Point } from "src/app/models/point";
 import { Session } from "src/app/models/session";
+import { SessionDelta } from "src/app/models/session-delta";
 
 export enum GameActionsTypes {
   START_NEW_GAME = '[Game] Start new game',
@@ -84,7 +85,7 @@ export class DoPlayerAction implements Action {
 export class UpdateState implements Action {
   readonly type = GameActionsTypes.UPDATE_STATE;
 
-  constructor(public payload: Session) {
+  constructor(public payload: SessionDelta) {
   }
 }
 

@@ -14,11 +14,13 @@
 
   width: 30%;
   height: 50px;
-  margin:5px;
+  margin: 5px;
+  padding: 5px;
   background: #f1202d;
   color: #09090b;
   border-radius: 15px;
   border: 15px white;
+
 
   font-size: 18px;
   font-weight: 700;
@@ -36,7 +38,7 @@
   font-weight: 700;
   font-family: 'Press Start 2P', cursive;
 
-  margin:5px;
+  margin: 5px;
 
   background: #f6fd02;
   color: #09090b;
@@ -72,9 +74,20 @@
 .users {
   min-width: 100px;
 }
+
 .watchers-count {
   min-width: 150px;
   text-align: right;
+}
+
+.loading-panel {
+  color: white;
+  margin-top: 30vh;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .img-loading {

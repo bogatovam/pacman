@@ -1,3 +1,52 @@
 <div class="game">
-  <canvas #board class="game-board"></canvas>
+  <div class="game-panel">
+    <div class="game-board-container">
+      <canvas #board></canvas>
+    </div>
+    <div
+      *ngIf="(mode$ | async) === Mode.PLAY"
+      class="game-chars-panel"
+    >
+      <div class="item">LEVEL: {{(level$ | async)}}</div>
+      <div class="item">SCORE: {{(score$ | async)}}</div>
+      <br>
+      <br>
+      <div class="item">LIVES: {{livesCount$ | async}}</div>
+    </div>
+    <div class="game-members-panel"
+    >
+      <div
+        class="item"
+      >PLAYERS:
+      </div>
+      <br>
+      <br>
+      <div
+        *ngFor="let player of (playersDictionary$ | async | keyvalue) as players; let i = index">
+        <div class="item player-chars">{{i}}: {{player.key.name}}</div>
+        <div class="item player-chars">SCORE: {{player.value.score}}</div>
+        <div class="item player-chars">LIVES: {{player.value.lifeCount}}</div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div
+        class="item"
+      >WATCHERS:
+      </div>
+      <br>
+      <br>
+      <div
+        class="item"
+        *ngFor="let watcher of (watchers$ | async) as watchers; let i = index">{{i}}: {{watcher.name}}</div>
+    </div>
+  </div>
+  <div class="game-time">
+    {{timer.mins.toString().length > 1 ? timer.mins : '0' + timer.mins.toString()}}
+    :{{timer.secs.toString().length > 1 ? timer.secs : '0' + timer.secs.toString()}}
+  </div>
 </div>
+<ng-template #gameOver>
+  <div class="game-over">GAME OVER</div>
+</ng-template>

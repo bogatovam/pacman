@@ -50,7 +50,7 @@ export class GameEffects {
     ofType(GameActionsTypes.START_CHECKING_SESSION),
     pluck("payload"),
     exhaustMap((sessionId: string) => this.gameSocketService.buildCheckSessionSocket(sessionId)),
-    mergeMap((delta: SessionDelta) => [new UpdateState(delta.session)])
+    mergeMap((delta: SessionDelta) => [new UpdateState(delta)])
   );
 
   @Effect()

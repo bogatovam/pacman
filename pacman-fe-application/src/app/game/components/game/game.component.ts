@@ -1,16 +1,20 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Store } from "@ngrx/store";
-import { pairwise } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { filter, first, mergeMap, pairwise, switchMap, tap } from "rxjs/operators";
 import { AppState } from "src/app/app.state";
-import { BLOCK_SIZE, GAME_HEIGHT, GAME_WIDTH, KEY, ZOOM } from "src/app/game/services/consts";
+import { User } from "src/app/auth/models/user";
+import { KEY } from "src/app/game/services/consts";
 import { DeltaResolverService } from "src/app/game/services/delta-resolver.service";
 import { DrawService } from "src/app/game/services/draw.service";
 import { GameStoreService } from "src/app/game/services/game-store.service";
 import { GameUtilService } from "src/app/game/services/game-util.service";
 import { DoPlayerAction } from "src/app/game/store/game.actions";
+import { Mode } from "src/app/game/store/game.state";
 import { CellType } from "src/app/models/cell-type";
 import { Ghost } from "src/app/models/ghost";
 import { Pacman } from "src/app/models/pacman";
+import { SessionDeltaAction } from "src/app/models/session-delta";
 
 
 @Component({
@@ -24,13 +28,27 @@ export class GameComponent implements OnInit {
               private  gameStoreService: GameStoreService,
               private  drawService: DrawService,
               private  deltaResolver: DeltaResolverService,
+              private  gameUtilService: GameUtilService,
   ) {
   }
 
+  SessionDeltaAction = SessionDeltaAction;
+  Mode = Mode;
   @ViewChild('board', {static: true})
   canvas: ElementRef<HTMLCanvasElement>;
 
+  mode$: Observable<Mode>;
   ctx: CanvasRenderingContext2D;
+  level$: Observable<number>;
+  score$: Observable<number>;
+  livesCount$: Observable<number>;
+
+  playersDictionary$: Observable<Map<User, Pacman>>;
+  watchers$: Observable<User[]>;
+
+  gameStatus$: Observable<SessionDeltaAction>;
+
+  timer: { mins: number, secs: number } = {mins: 0, secs: 0};
 
   moves = {
     [KEY.LEFT]: (): void => this.store$.dispatch(new DoPlayerAction({x: 0.0, y: -1.0})),
@@ -68,6 +86,14 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+    this.level$ = this.gameStoreService.getLevel();
+    this.gameStatus$ = this.gameStoreService.getGameStatus();
+    this.watchers$ = this.gameStoreService.getWatchers();
+
+    this.score$ = this.gameUtilService.score$;
+    this.livesCount$ = this.gameUtilService.livesCount$;
+    this.playersDictionary$ = this.gameUtilService.playersDictionary$;
+    this.mode$ = this.gameStoreService.getMode();
 
     this.gameStoreService.getGameBoard().pipe(
       pairwise(),
@@ -88,6 +114,25 @@ export class GameComponent implements OnInit {
     ).subscribe(([prev, curr]: [Ghost[], Ghost[]]) => {
       this.deltaResolver.resolveGhosts(this.ctx, prev, curr);
     });
+
+    this.gameStoreService.getTime().pipe(
+      filter((time) => !!time),
+      first(),
+      tap((time) => {
+        const initSec: number = Math.floor((time / 1000) % 60);
+        const initMin: number = Math.floor((time / 1000) / 60);
+        this.timer.secs = initSec;
+        this.timer.mins = initMin;
+        setInterval(() => {
+          if (this.timer.secs + 1 >= 60) {
+            this.timer.secs = 0;
+            this.timer.mins++;
+          } else {
+            this.timer.secs++;
+          }
+        }, 1000);
+      }),
+    ).subscribe();
   }
 }
 

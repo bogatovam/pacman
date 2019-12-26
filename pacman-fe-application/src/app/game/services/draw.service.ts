@@ -9,11 +9,11 @@ import { Pacman } from "src/app/models/pacman";
   providedIn: 'root'
 })
 export class DrawService {
-  imagePacman = new Image(20, 20);
-  imageRGhost = new Image(20, 20);
-  imageBGhost = new Image(20, 20);
-  imagePGhost = new Image(20, 20);
-  imageYGhost = new Image(20, 20);
+  imagePacman = new Image(18, 18);
+  imageRGhost = new Image(18, 18);
+  imageBGhost = new Image(18, 18);
+  imagePGhost = new Image(18, 18);
+  imageYGhost = new Image(18, 18);
 
 
   constructor() {
@@ -42,7 +42,7 @@ export class DrawService {
         } else if (board[y][x] === CellType.SCORE) {
           ctx.fillStyle = "rgb(246,253,2)";
           ctx.fillRect(x * BLOCK_SIZE * ZOOM + 5, y * BLOCK_SIZE * ZOOM + 5,
-            1, 1);
+            2, 2);
         }
       }
     }
@@ -62,8 +62,9 @@ export class DrawService {
         2, 2);
     }
   }
+
   fillLabyrinthField(ctx: CanvasRenderingContext2D, x: number, y: number, type: CellType): void {
- if (type === CellType.SCORE) {
+    if (type === CellType.SCORE) {
       ctx.fillStyle = "rgb(246,253,2)";
       ctx.fillRect(x * BLOCK_SIZE * ZOOM + 5, y * BLOCK_SIZE * ZOOM + 5,
         2, 2);
@@ -76,7 +77,7 @@ export class DrawService {
              currPacman: Pacman,
              currEntityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
     ctx.clearRect(prevEntityCoordinates.x * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      prevEntityCoordinates.y * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+      prevEntityCoordinates.y * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
     this.initPacman(ctx, currPacman, currEntityCoordinates);
   }
 
@@ -84,7 +85,7 @@ export class DrawService {
              currPacman: Pacman,
              entityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
     ctx.drawImage(this.imagePacman, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+      entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
   }
 
   drawGhost(ctx: CanvasRenderingContext2D,
@@ -94,16 +95,19 @@ export class DrawService {
             currGhost: Ghost,
             currEntityCoordinates: { x: number; y: number; offsetX: number; offsetY: number }): void {
     ctx.clearRect(prevEntityCoordinates.x * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-      prevEntityCoordinates.y * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
-    this.initGhost(ctx, currGhost, currEntityCoordinates);
+      prevEntityCoordinates.y * BLOCK_SIZE * ZOOM + prevEntityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
     if (board) {
       this.fillLabyrinthField(ctx,
         prevEntityCoordinates.x,
         prevEntityCoordinates.y, board[prevEntityCoordinates.y][prevEntityCoordinates.x]);
       this.fillLabyrinthField(ctx,
-        currEntityCoordinates.x,
-        currEntityCoordinates.y, board[currEntityCoordinates.y][currEntityCoordinates.x]);
+        prevEntityCoordinates.x + 1,
+        prevEntityCoordinates.y, board[prevEntityCoordinates.y][prevEntityCoordinates.x + 1]);
+      this.fillLabyrinthField(ctx,
+        prevEntityCoordinates.x,
+        prevEntityCoordinates.y + 1, board[prevEntityCoordinates.y + 1][prevEntityCoordinates.x]);
     }
+    this.initGhost(ctx, currGhost, currEntityCoordinates);
   }
 
   initGhost(ctx: CanvasRenderingContext2D,
@@ -112,22 +116,22 @@ export class DrawService {
     switch (currGhost.color) {
       case Color.YELLOW: {
         ctx.drawImage(this.imageYGhost, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
         break;
       }
       case Color.RED: {
         ctx.drawImage(this.imageRGhost, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
         break;
       }
       case Color.BLUE: {
         ctx.drawImage(this.imageBGhost, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
         break;
       }
       case Color.PINK: {
         ctx.drawImage(this.imagePGhost, entityCoordinates.x * BLOCK_SIZE * ZOOM + entityCoordinates.offsetX * BLOCK_SIZE * ZOOM,
-          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 20, 20);
+          entityCoordinates.y * BLOCK_SIZE * ZOOM + entityCoordinates.offsetY * BLOCK_SIZE * ZOOM, 18, 18);
         break;
       }
     }

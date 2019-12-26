@@ -19,7 +19,7 @@
     </button>
 
     <div class="session-panel"
-         *ngIf="mode == Mode.WATCH"
+         *ngIf="(mode$ | async) == Mode.WATCH"
     >
       <div>
         <div
@@ -47,7 +47,8 @@
     <game></game>
   </div>
 </div>
-<div *ngIf="loading$ | async">
-  <div>LOADING, PLEASE WAIT</div>
+<div *ngIf="loading$ | async"
+     class="loading-panel">
+  <div>LOADING, PLEASE WAIT...</div>
   <img class="img-loading" src="/assets/pacman.gif">
 </div>
