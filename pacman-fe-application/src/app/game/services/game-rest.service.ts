@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { User } from "src/app/auth/models/user";
@@ -25,7 +25,8 @@ export class GameRestService {
   }
 
   doPlayerAction(userId: string, gameId: string, vector: Point): Observable<any> {
-    return this.http.post(routes.playerAction + gameId, {playerId: userId, speedVector: vector});
+    return this.http.post(routes.playerAction + gameId, {playerId: userId, speedVector: vector},
+      );
   }
 
   constructor(private http: HttpClient) {

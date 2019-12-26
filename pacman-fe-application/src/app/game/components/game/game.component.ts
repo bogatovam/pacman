@@ -33,8 +33,8 @@ export class GameComponent implements OnInit {
   ctx: CanvasRenderingContext2D;
 
   moves = {
-    [KEY.LEFT]: (): void => this.store$.dispatch(new DoPlayerAction({x: 0.0, y: 1.0})),
-    [KEY.RIGHT]: (): void => this.store$.dispatch(new DoPlayerAction({x: 0.0, y: -1.0})),
+    [KEY.LEFT]: (): void => this.store$.dispatch(new DoPlayerAction({x: 0.0, y: -1.0})),
+    [KEY.RIGHT]: (): void => this.store$.dispatch(new DoPlayerAction({x: 0.0, y: 1.0})),
     [KEY.DOWN]: (): void => this.store$.dispatch(new DoPlayerAction({x: 1.0, y: 0.0})),
     [KEY.UP]: (): void => this.store$.dispatch(new DoPlayerAction({x: -1.0, y: 0.0})),
     [KEY.NONE]: (): void => this.store$.dispatch(new DoPlayerAction({x: 0.0, y: 0.0}))
