@@ -17,7 +17,7 @@ import { SessionDelta } from "src/app/models/session-delta";
 export class GameEffects {
 
   @Effect()
-  startNewGame: Observable<Action>  = this.actions$.pipe(
+  startNewGame: Observable<Action> = this.actions$.pipe(
     ofType(GameActionsTypes.START_NEW_GAME),
     withLatestFrom(this.authStoreService.retrieveUserId()),
     switchMap(([, userId]: [string, string]) => {
@@ -76,7 +76,11 @@ export class GameEffects {
     pluck("payload"),
     withLatestFrom(this.authStoreService.retrieveUserId(), this.gameStoreService.getGameId()),
     mergeMap(([vector, userId, gameId]: [Point, string, string]) =>
-      this.gameRestService.doPlayerAction(userId, gameId, vector)
+      this.gameRestService.doPlayerAction(userId, gameId, vector).pipe(
+        map(() => {
+          return {};
+        })
+      )
     ),
   );
 
@@ -85,5 +89,6 @@ export class GameEffects {
               private  gameSocketService: GameSocketService,
               private  gameStoreService: GameStoreService,
               private  authStoreService: AuthStoreService,
-  ) { }
+  ) {
+  }
 }

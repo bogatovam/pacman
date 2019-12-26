@@ -11,6 +11,8 @@ import { Pacman } from "src/app/models/pacman";
   providedIn: 'root'
 })
 export class DeltaResolverService {
+  board: CellType[][] = null;
+
   resolveBoard(ctx: CanvasRenderingContext2D, prevBoard: CellType[][], currBoard: CellType[][]): void {
 
     if (!prevBoard && currBoard) {
@@ -24,6 +26,8 @@ export class DeltaResolverService {
         }
       }
     }
+
+    this.board = currBoard;
   }
 
   resolvePacmans(ctx: CanvasRenderingContext2D, prevPacmans: Pacman[], currPacmans: Pacman[]): void {
@@ -32,37 +36,24 @@ export class DeltaResolverService {
         this.drawService.initPacman(ctx, currPacmans[i], this.getEntityCoordinates(currPacmans[i]));
       }
     } else if (prevPacmans && currPacmans) {
-
+      for (let i = 0; i < currPacmans.length; i++) {
+        this.drawService.drawPacman(ctx, prevPacmans[i], this.getEntityCoordinates(prevPacmans[i]),
+          currPacmans[i], this.getEntityCoordinates(currPacmans[i]));
+      }
     }
   }
 
   resolveGhosts(ctx: CanvasRenderingContext2D, prevGhosts: Ghost[], currGhosts: Ghost[]): void {
     if (!prevGhosts && currGhosts) {
       for (let i = 0; i < currGhosts.length; i++) {
-        switch (currGhosts[i].color) {
-          case Color.BLUE: {
-            console.log(currGhosts[i].color);
-
-            this.drawService.initBlueGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
-            break;
-          }
-          case Color.PINK: {
-            this.drawService.initPinkGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
-            break;
-          }
-          case Color.RED: {
-            this.drawService.initRedGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
-            break;
-          }
-          case Color.YELLOW: {
-            console.log(this.getEntityCoordinates(currGhosts[i]));
-            this.drawService.initYellowGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
-            break;
-          }
-        }
+        this.drawService.initGhost(ctx, currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
       }
     } else if (prevGhosts && currGhosts) {
-
+      for (let i = 0; i < currGhosts.length; i++) {
+        const prev = this.getEntityCoordinates(prevGhosts[i]);
+        this.drawService.drawGhost(ctx, this.board, prevGhosts[i], prev,
+          currGhosts[i], this.getEntityCoordinates(currGhosts[i]));
+      }
     }
   }
 
