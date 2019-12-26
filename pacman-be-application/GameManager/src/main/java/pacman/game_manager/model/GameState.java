@@ -240,6 +240,7 @@ public class GameState {
             /** Out for Ghost */
             if(step == 10) {
                 System.out.println("RED Coords: " + state.getGhosts().get(0).getCoords().x.floatValue() + " " + state.getGhosts().get(0).getCoords().y.floatValue());
+                System.out.println("RED's " + state.getGhosts().get(0).getNearPacman().getColor());
                 System.out.println("BLUE Coords: " + state.getGhosts().get(1).getCoords().x.floatValue() + " " + state.getGhosts().get(1).getCoords().y.floatValue());
                 System.out.println("PINK Coords: " + state.getGhosts().get(2).getCoords().x.floatValue() + " " + state.getGhosts().get(2).getCoords().y.floatValue());
                 System.out.println("YELLOW Coords: " + state.getGhosts().get(3).getCoords().x.floatValue() + " " + state.getGhosts().get(3).getCoords().y.floatValue());
