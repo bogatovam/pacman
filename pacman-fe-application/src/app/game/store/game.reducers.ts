@@ -41,14 +41,15 @@ export function reducer(state: GameState = initialGameState, action: GameActions
     case GameActionsTypes.UPDATE_STATE: {
       return {
         ...state,
-        gameId: action.payload.gameState.id,
-        time: action.payload.gameState.time,
-        level: action.payload.gameState.level,
-        pacmans: action.payload.gameState.pacman,
-        ghosts: action.payload.gameState.ghosts,
-        cellMatrix: { ...action.payload.gameState.cellMatrix},
-        players: action.payload.players,
-        watchers: action.payload.watchers,
+        gameId: action.payload.session.gameState.id,
+        time: action.payload.session.gameState.time,
+        level: action.payload.session.gameState.level,
+        pacmans: action.payload.session.gameState.pacman,
+        ghosts: action.payload.session.gameState.ghosts,
+        cellMatrix: {...action.payload.session.gameState.cellMatrix},
+        players: action.payload.session.players,
+        watchers: action.payload.session.watchers,
+        gameStatus: action.payload.action,
       };
     }
 

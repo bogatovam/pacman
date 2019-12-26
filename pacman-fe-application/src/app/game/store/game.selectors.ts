@@ -13,3 +13,5 @@ export const retrieveLevel = createSelector(selectGameState, (state: GameState) 
 export const retrievePlayers = createSelector(selectGameState, (state: GameState) => state.players);
 export const retrieveWatchers = createSelector(selectGameState, (state: GameState) => state.watchers);
 export const retrieveGameId = createSelector(selectGameState, (state: GameState) => state.gameId);
+export const retrieveMode = createSelector(selectGameState, (state: GameState) => state.mode);
+export const retrieveTime = createSelector(selectGameState, (state: GameState) => state.time);

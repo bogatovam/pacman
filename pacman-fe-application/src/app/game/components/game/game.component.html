@@ -4,6 +4,7 @@
       <canvas #board></canvas>
     </div>
     <div
+      *ngIf="(mode$ | async) === Mode.PLAY"
       class="game-chars-panel"
     >
       <div class="item">LEVEL: {{(level$ | async)}}</div>
@@ -21,8 +22,11 @@
       <br>
       <br>
       <div
-        class="item"
-        *ngFor="let player of (players$ | async) as players; let i = index">{{i}}: {{player.name}}</div>
+        *ngFor="let player of (playersDictionary$ | async | keyvalue) as players; let i = index">
+        <div class="item player-chars">{{i}}: {{player.key.name}}</div>
+        <div class="item player-chars">SCORE: {{player.value.score}}</div>
+        <div class="item player-chars">LIVES: {{player.value.lifeCount}}</div>
+      </div>
       <br>
       <br>
       <br>

@@ -26,6 +26,20 @@ export class GameUtilService {
         }
       ),
     );
+  public playersDictionary$: Observable<Map<User, Pacman>> =
+    combineLatest(
+      this.gameStoreService.getPlayers(),
+      this.gameStoreService.getPacmans(),
+    ).pipe(
+      filter(([players, pacmans]: [User[], Pacman[]]) => !!players && !!pacmans),
+      map(([players, pacmans]: [User[], Pacman[]]) => {
+        const res: Map<User, Pacman> = new Map<User, Pacman>();
+        players.forEach((player: User) => {
+          res.set(player, pacmans.find((pacman: Pacman) => pacman.user.id === player.id));
+        });
+        return res;
+      }),
+    );
 
   public score$: Observable<number> = combineLatest([
     this.gameStoreService.getPacmans(),

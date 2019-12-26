@@ -17,7 +17,7 @@ import { SimpleMap } from "src/app/models/simple-map";
 })
 export class GamePanelComponent implements OnInit {
   Mode = Mode;
-  mode: Mode = Mode.NONE;
+  mode$: Observable<Mode>;
 
   loading$: Observable<boolean> = null;
   isActiveSessionPresent$: Observable<boolean> = null;
@@ -33,6 +33,7 @@ export class GamePanelComponent implements OnInit {
     this.activeSessions$ = this.gameUtilService.activeSessions$;
     this.isActiveSessionPresent$ = this.gameStoreService.isActiveSessionPresent();
     this.loading$ = this.gameStoreService.isLoading();
+    this.mode$ = this.gameStoreService.getMode();
   }
 
   startGame(): void {
@@ -44,6 +45,6 @@ export class GamePanelComponent implements OnInit {
   }
 
   showWatchGameMenu(): void {
-    this.mode = Mode.WATCH;
+    this.gameStoreService.setMode(Mode.WATCH);
   }
 }
